@@ -10,7 +10,9 @@ import LanguageSelect from './LanguageSelect';
 import CIFORLogo from '../assets/logos/CIFOR.png';
 import EIILogo from '../assets/logos/EII.png';
 import GFWLogo from '../assets/logos/GFW.png';
+import MDALogo from '../assets/logos/MDA.png';
 import NORADLogo from '../assets/logos/NORAD.png';
+import PNSLogo from '../assets/logos/PNS.png';
 import RBFLogo from '../assets/logos/RBF.png';
 import TCGLogo from '../assets/logos/TCG.png';
 
@@ -21,7 +23,9 @@ const GCFTF_URL = 'https://www.gcftf.org';
 const GCFTF_KDB_URL = 'https://www.gcftaskforce-database.org';
 const GFW_URL = 'https://www.globalforestwatch.org';
 const INSTAGRAM_URL = 'https://www.instagram.com/gcftaskforce/';
+const MDA_URL = 'https://www.mda.org.pe/';
 const NORAD_URL = 'https://norad.no/en/front/';
+const PNS_URL = 'http://www.pronatura-sur.org/';
 const RBF_URL = 'https://www.rbf.org/';
 const TCG_URL = 'https://www.theclimategroup.org';
 const TWITTER_URL = 'https://twitter.com/gcftaskforce';
@@ -49,7 +53,7 @@ const FooterGrid = styled.div`
                          'withsupportfrom'
                          'acknowledgementsgrid'
                          'copyright';
-    height: 400px;
+    height: 405px;
   }
 `;
 
@@ -74,7 +78,7 @@ const AcknowledgementsGrid = styled.div`
   grid-column-gap: 22px;
 
   /* grid-template-columns: repeat(auto-fill, minmax(30%, 1fr)); */
-  align-items: top;
+  align-items: start;
   justify-items: center;
   margin: 0 15px;
   height: 100%;
@@ -90,8 +94,8 @@ const AcknowledgementsGrid = styled.div`
   @media (max-width: 765px) {
     grid-area: acknowledgementsgrid;
     grid-row: 5/6;
-    grid-template-columns: repeat(8, auto);
-    grid-template-rows: 1fr;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: 1fr 1fr;
     margin: 0 30px;
     grid-column-gap: 15px;
     align-items: start;
@@ -215,8 +219,8 @@ const LogoLink = styled.a`
   }
 
   @media (max-width: 765px) {
-    height: 70px;
-    width: 70px;
+    height: 50px;
+    width: 50px;
     margin-bottom: 0;
   }
 `;
@@ -235,8 +239,8 @@ const Logo = styled.div`
   }
 
   @media (max-width: 765px) {
-    height: 70px;
-    width: 70px;
+    height: 50px;
+    width: 50px;
   }
 `;
 
@@ -310,23 +314,23 @@ const Footer = ({ content }) => {
         <LogoLink href={NORAD_URL} rel="noopener noreferrer" target="_blank" row={0}>
           <Logo logo={NORADLogo} />
         </LogoLink>
-        <LogoLink href={CIFOR_URL} rel="noopener noreferrer" target="_blank" row={0}>
-          <Logo logo={CIFORLogo} />
-        </LogoLink>
         <LogoLink href={RBF_URL} rel="noopener noreferrer" target="_blank" row={0}>
           <Logo logo={RBFLogo} />
+        </LogoLink>
+        <LogoLink href={CIFOR_URL} rel="noopener noreferrer" target="_blank" row={0}>
+          <Logo logo={CIFORLogo} />
         </LogoLink>
         <LogoLink href={GFW_URL} rel="noopener noreferrer" target="_blank" row={0}>
           <Logo logo={GFWLogo} />
         </LogoLink>
+        <LogoLink href={PNS_URL} rel="noopener noreferrer" target="_blank" row={1}>
+          <Logo logo={PNSLogo} />
+        </LogoLink>
+        <LogoLink href={MDA_URL} rel="noopener noreferrer" target="_blank" row={1}>
+          <Logo logo={MDALogo} />
+        </LogoLink>
         <LogoLink href={EII_URL} rel="noopener noreferrer" target="_blank" row={1}>
           <Logo logo={EIILogo} />
-        </LogoLink>
-        <LogoLink href={TCG_URL} rel="noopener noreferrer" target="_blank" row={1}>
-          <Logo logo={TCGLogo} />
-        </LogoLink>
-        <LogoLink href={TCG_URL} rel="noopener noreferrer" target="_blank" row={1}>
-          <Logo logo={TCGLogo} />
         </LogoLink>
         <LogoLink href={TCG_URL} rel="noopener noreferrer" target="_blank" row={1}>
           <Logo logo={TCGLogo} />
