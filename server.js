@@ -7,7 +7,7 @@ const express = require('express');
 const favicon = require('express-favicon');
 const path = require('path');
 
-const db = require('../database');
+// const db = require('../database');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
