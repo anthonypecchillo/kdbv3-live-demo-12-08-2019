@@ -346,7 +346,7 @@
   font-style: normal;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Avenir Next';
   src: url('./assets/fonts/AvenirNext/AvenirNext-Regular.woff2') format('woff2');
 }
@@ -369,7 +369,7 @@
   font-family: 'Avenir Next';
   src: url('./assets/fonts/AvenirNext/AvenirNext-Heavy.woff2') format('woff2');
   font-weight: 900;
-}
+} */
 
 @font-face {
   font-family: 'Open Sans';
