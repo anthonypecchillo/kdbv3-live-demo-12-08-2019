@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import LanguageSelect from './LanguageSelect';
@@ -226,9 +227,10 @@ const NavBar = ({
 
   return (
     <NavBarGrid>
-      <a href={GCFTF_KDB_URL} style={{ placeSelf: 'center' }}>
+      <Link to="/">
         <Logo />
-      </a>
+      </Link>
+
       <NavTitle onClick={toggleModal}>
         Knowledge Database
       </NavTitle>

@@ -22,6 +22,10 @@ const JumbotronGrid = styled.div`
   @media (max-width: 765px) {
     grid-template-columns: 1fr;
   }
+
+  @media (max-width: 460px) {
+    height: 640.8px;
+  }
 `;
 
 const JumbotronMiniGrid = styled.div`
@@ -29,7 +33,7 @@ const JumbotronMiniGrid = styled.div`
   grid-template-columns: minmax(460px, 11fr) 9fr;
   grid-template-rows: 1fr 2.5fr 2.5fr 1fr;
   /* grid-template-rows: 75px 150px 225px 75px; */
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.60);
   /* align-items: center; */
   padding: 85px 0 85px 0;
 
@@ -42,6 +46,13 @@ const JumbotronMiniGrid = styled.div`
     padding-top: 120px;
     grid-template-columns: 8fr 1fr;
     padding-left: 60px;
+  }
+
+  @media (max-width: 460px) {
+    grid-template-columns: 99% 1%;
+    padding-top: 121px;
+    padding-left: 0;
+    padding-right: 0;
   }
 `;
 
@@ -58,6 +69,11 @@ const JumbotronBrandText = styled.div`
   width: 100%;
   /* border: 1px dashed red; */
   /* color: #582399; */
+
+  @media (max-width: 460px) {
+    text-align: center;
+    padding-left: 0;
+  }
 `;
 
 const JumbotronTitle = styled.div`
@@ -79,6 +95,12 @@ const JumbotronTitle = styled.div`
     color: #582399;
     cursor: default;
   }
+
+  @media (max-width: 460px) {
+    text-align: center;
+    padding-left: 0;
+    font-size: 60px;
+  }
 `;
 
 const JumbotronDescription = styled.div`
@@ -94,15 +116,28 @@ const JumbotronDescription = styled.div`
   width: 100%;
   line-height: 1.8em;
   /* border: 1px dashed red; */
+
+  @media (max-width: 460px) {
+    text-align: center;
+    padding-left: 0;
+    place-self: center;
+  }
 `;
 
 const JumbotronButtonGrid = styled.div`
+  place-self: center;
   display: grid;
   grid-template-columns: 30px 5fr 1fr 5fr;
   place-items: center;
   height: 100%;
   width: 100%;
   /* border: 1px dashed red; */
+  @media (max-width: 460px) {
+    grid-template-columns: 5px 5fr 1fr 5fr;
+    padding-left: 0;
+    text-align: center;
+    width: 90%;
+  }
 `;
 
 const JumbotronButton = styled.div`

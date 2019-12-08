@@ -64,7 +64,7 @@ const ModalFade = styled.div`
   bottom: 0;
   right: 0;
   /* height: 1790px; */
-  height: 2153px;
+  height: 2300px;
   background: rgba(0, 0, 0, 0.6);
   z-index: 998;
 `;

@@ -8,6 +8,9 @@ import styled from 'styled-components';
 import Carousel from './Carousel';
 
 import GCFTFLogo from '../assets/logos/GCFTF.png';
+import ForestCarbonURL from '../assets/images/Forest-Carbon.jpg';
+import TropicalForestURL from '../assets/images/Tropical-Forest.jpg';
+import SquareKilometersForestURL from '../assets/images/Square-Kilometers-Forest.jpg';
 
 const carouselSlidesData = [
   {
@@ -15,15 +18,18 @@ const carouselSlidesData = [
   //   value: '35',
   // }, {
     content: 'MILLION SQUARE KILOMETERS OF TROPICAL FOREST',
+    imageURL: SquareKilometersForestURL,
     value: '4.9',
   }, {
     content: 'BILLION TONNES OF FOREST CARBON',
+    imageURL: ForestCarbonURL,
     value: '55',
   // }, {
   //   content: 'COUNTRIES',
   //   value: '10',
   }, {
-    content: 'OF THE WORLD\'s TROPICAL FORESTS',
+    content: 'WORLD\'s TROPICAL FORESTS',
+    imageURL: TropicalForestURL,
     value: '1/3',
   },
 ];
@@ -75,7 +81,6 @@ const Rectangle2 = styled.div`
 
   list-style-type: none;
   text-align: center;
-  padding: 30px;
 
   @media (max-width: 1025px) {
     height: 50vw;
@@ -89,9 +94,11 @@ const Rectangle2 = styled.div`
   }
 `;
 
-const Logo = styled.div`
-  place-self: center;
-  background: no-repeat center/100% url(${GCFTFLogo});
+const Image = styled.div`
+  align-self: start;
+  justify-self: center;
+  background: ${({ imageURL }) => `no-repeat center/100% url(${imageURL})`};
+  background-size: cover;
   width: 100%;
   height: 100%;
 `;
@@ -136,11 +143,13 @@ const CarouselSlideContent = styled.div`
 `;
 
 const CarouselSlideValue = styled.div`
+  align-self: end;
   font-size: 60px;
   /* margin-bottom: 20px; */
 `;
 
 const CarouselSlideDescription = styled.div`
+  padding: 30px;
   font-size: 16px;
 `;
 
@@ -158,7 +167,7 @@ const SellingPoints = ({ content }) => {
             hideBelow765
           >
             <CarouselSlideContent>
-              <Logo />
+              <Image imageURL={slide.imageURL} />
               <CarouselSlideValue>{slide.value}</CarouselSlideValue>
               <CarouselSlideDescription>{slide.content}</CarouselSlideDescription>
             </CarouselSlideContent>
