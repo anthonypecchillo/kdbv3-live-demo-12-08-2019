@@ -68,7 +68,9 @@ const LawBody = ({ isOpen }) => {
       <LawBodyLogo logo={GCFTFLogo} />
       <LawBodySummary>
         <LawBodySummaryTitle>Summary:</LawBodySummaryTitle>
-        <LawBodySummaryText>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in mauris quam. In semper dolor vel nunc porttitor ornare. Maecenas hendrerit urna euismod, sodales orci eget, pulvinar risus. Proin lacinia tincidunt ante, quis feugiat ipsum accumsan id. Sed facilisis urna nisl, in ultricies turpis fermentum eget. Nullam turpis libero, venenatis eu urna eget, dapibus varius mauris. Integer vehicula porttitor vestibulum. Nunc bibendum tortor id egestas commodo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam pharetra eleifend felis. Praesent commodo risus nec aliquet maximus. Mauris bibendum volutpat dui. Pellentesque at cursus arcu. Pellentesque consequat aliquet faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</LawBodySummaryText>
+        <LawBodySummaryText>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in mauris quam. In semper dolor vel nunc porttitor ornare. Maecenas hendrerit urna euismod, sodales orci eget, pulvinar risus. <br /><br />Proin lacinia tincidunt ante, quis feugiat ipsum accumsan id. Sed facilisis urna nisl, in ultricies turpis fermentum eget. Nullam turpis libero, venenatis eu ...
+        </LawBodySummaryText>
       </LawBodySummary>
       <Icon2 className="far fa-file-pdf fa-4x" href="https://laws-and-policies.s3-us-west-1.amazonaws.com/brazil/brasil-mato-redd%2Bcouncil.pdf" rel="noopener noreferrer" target="_blank" />
     </LawBodyGrid>

@@ -23,7 +23,7 @@ const LawListItemGrid = styled.div`
 
 const LawHeader = styled.div`
   display: grid;
-  grid-template-columns: 8fr minmax(172px, 3fr) minmax(40px, 1fr);
+  grid-template-columns: 8fr minmax(200px, 3fr) minmax(40px, 1fr);
   justify-items: center;
 
   background-color: skyblue;
