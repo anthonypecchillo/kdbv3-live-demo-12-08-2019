@@ -83,10 +83,10 @@ const dataSource = {
     showentityhovereffect: '1',
     entityToolText:
       "<div style='font-size:14px; text-align:center; padding: 2px 4px 2px 4px; color:black;'>$lName</div><div style='font-size:12px; color:black;'>States & Provinces: <b>$value</b></div>",
-    entityFillHoverColor: '#FFF9C4',
     theme: 'fusion',
     nullentitycolor: '#C3D2DA',
     // entityfillhovercolor: '#FFF9C4',
+    entityfillhovercolor: '#87ceeb',
     showLegend: false,
     // chartLeftMargin: 40,
     chartRightMargin: -150,
@@ -204,9 +204,10 @@ const dataSource = {
       id: 'us',
       linkedchart: {
         chart: {
-          caption: 'Annual Sales by State',
-          subcaption: 'Last year',
-          entityFillHoverColor: '#cccccc',
+          caption: 'United States',
+          // subcaption: 'Last year',
+          nullentitycolor: '#C3D2DA',
+          entityFillHoverColor: '#87ceeb',
           entityToolText: "<div style='font-size:14px; text-align:center; padding: 2px 4px 2px 4px; color:black;'>$lName</div><div style='font-size:12px; color:black;'>Total Forest Area: <b>$value km<sup>2</sup></b></div>",
           // numberScaleValue: '1,1000,1000',
           // numberScaleUnit: 'K,M,B',
@@ -237,13 +238,13 @@ const dataSource = {
           {
             id: 'tx',
             value: '5',
-            link: 'newchart-json-texas',
+            // link: 'newchart-json-texas',
             showLabel: '1',
           },
           {
             id: 'ca',
             value: '5',
-            link: 'newchart-json-california',
+            // link: 'newchart-json-california',
             showLabel: '1',
           },
         ],
@@ -271,9 +272,10 @@ const dataSource = {
       id: 'brazil',
       linkedchart: {
         chart: {
-          caption: 'Brazil Caption',
-          subcaption: 'Last year',
-          entityFillHoverColor: '#cccccc',
+          caption: 'Brazil',
+          // subcaption: 'Last year',
+          nullentitycolor: '#C3D2DA',
+          entityFillHoverColor: '#87ceeb',
           entityToolText: "<div style='font-size:14px; text-align:center; padding: 2px 4px 2px 4px; color:black;'>$lName</div><div style='font-size:12px; color:black;'>Total Forest Area: <b>$value km<sup>2</sup></b></div>",
           // numberScaleValue: '1,1000,1000',
           // numberScaleUnit: 'K,M,B',
@@ -281,74 +283,88 @@ const dataSource = {
           showLabels: '0',
           theme: 'fusion',
         },
-        colorrange: {
+        colorRange: {
           minvalue: '0',
           code: '#8AB458',
           gradient: '1',
           color: [
             {
-              minvalue: '1',
-              maxvalue: '5',
+              minvalue: '0',
+              maxvalue: '50000',
               color: '#8AB458',
             },
             {
-              minvalue: '6',
-              maxvalue: '9',
-              color: '#426539',
+              minvalue: '50000',
+              maxvalue: '250000',
+              color: '#7a9450',
+              // color: '#3E522D'
+            },
+            {
+              minvalue: '250000',
+              maxvalue: '1500000',
+              color: '#213916',
               // color: '#3E522D'
             },
           ],
         },
 
         data: [
-          {
-            id: '001',
-            value: '5',
-            link: 'newchart-json-acre',
-            showLabel: '1',
-          },
-          {
-            id: '003',
-            value: '5',
-            link: 'newchart-json-amapa',
-            showLabel: '1',
-          },
-          {
-            id: '004',
-            value: '5',
-            link: 'newchart-json-amazonas',
-            showLabel: '1',
-          },
-          {
-            id: '010',
-            value: '5',
-            link: 'newchart-json-maranhao',
-            showLabel: '1',
-          },
-          {
-            id: '011',
-            value: '5',
-            link: 'newchart-json-matogrosso',
-            showLabel: '1',
-          },
-          {
-            id: '014',
-            value: '5',
-            link: 'newchart-json-para',
-            showLabel: '1',
-          },
-          {
-            id: '022',
-            value: '5',
-            link: 'newchart-json-rondonia',
-            showLabel: '1',
-          },
-          {
-            id: '023',
-            value: '5',
-            link: 'newchart-json-roraima',
-            showLabel: '1',
-          },
+          {id: '001', value: '148125', link: '/brazil/acre', showLabel: '1'},
+          {id: '003', value: '104135', link: '/brazil/amapa', showLabel: '1'},
+          {id: '004', value: '1447212', link: '/brazil/amazonas', showLabel: '1'},
+          {id: '010', value: '39566', link: '/brazil/maranhao', showLabel: '1'},
+          {id: '011', value: '308797', link: '/brazil/matogrosso', showLabel: '1'},
+          {id: '014', value: '861816', link: '/brazil/para', showLabel: '1'},
+          {id: '022', value: '123111', link: '/brazil/rondonia', showLabel: '1'},
+          {id: '023', value: '147293', link: '/brazil/roraima', showLabel: '1'},
+          // {
+          //   id: '001',
+          //   value: '5',
+          //   // link: 'newchart-json-acre',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '003',
+          //   value: '5',
+          //   // link: 'newchart-json-amapa',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '004',
+          //   value: '5',
+          //   // link: 'newchart-json-amazonas',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '010',
+          //   value: '5',
+          //   // link: 'newchart-json-maranhao',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '011',
+          //   value: '5',
+          //   // link: 'newchart-json-matogrosso',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '014',
+          //   value: '5',
+          //   // link: 'newchart-json-para',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '022',
+          //   value: '5',
+          //   // link: 'newchart-json-rondonia',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '023',
+          //   value: '5',
+          //   // link: 'newchart-json-roraima',
+          //   showLabel: '1',
+          // },
         ],
         linkeddata: [
           {
@@ -423,9 +439,10 @@ const dataSource = {
       id: 'indonesia',
       linkedchart: {
         chart: {
-          caption: 'Indonesia Caption',
-          subcaption: 'Last year',
-          entityFillHoverColor: '#cccccc',
+          caption: 'Indonesia',
+          // subcaption: 'Last year',
+          nullentitycolor: '#C3D2DA',
+          entityFillHoverColor: '#87ceeb',
           entityToolText: "<div style='font-size:14px; text-align:center; padding: 2px 4px 2px 4px; color:black;'>$lName</div><div style='font-size:12px; text-align:center; color:black;'>Total Forest Area: <b>$value km<sup>2</sup></b></div>",
           // numberScaleValue: '1,1000,1000',
           // numberScaleUnit: 'K,M,B',
@@ -457,51 +474,67 @@ const dataSource = {
             },
           ],
         },
-
-        data: [
-          {
-            id: '01',
-            value: '31600',
-            link: 'newchart-json-specialregionofaceh',
-            showLabel: '1',
-          },
-          {
-            id: '13',
-            value: '80200',
-            link: 'newchart-json-centralkalimantan',
-            showLabel: '1',
-          },
-          {
-            id: '14',
-            value: '62200',
-            link: 'newchart-json-eastkalimantan',
-            showLabel: '1',
-          },
-          {
-            id: '42',
-            value: '58900',
-            link: 'newchart-json-northkalimantan',
-            showLabel: '1',
-          },
-          {
-            id: '11',
-            value: '61500',
-            // link: 'newchart-json-westkalimantan',
-            showLabel: '1',
-          },
-          {
-            id: '36',
-            value: '249284',
-            // link: 'newchart-json-specialregionofpapua',
-            showLabel: '1',
-          },
-          {
-            id: '39',
-            value: '90500',
-            // link: 'newchart-json-specialregionofwestpapua',
-            showLabel: '1',
-          },
+        entityDef: [
+          {internalId: '01', newId: 'Aceh'},
+          {internalId: '13', newId: 'Central Kalimantan'},
+          {internalId: '14', newId: 'East Kalimantan'},
+          {internalId: '42', newId: 'North Kalimantan'},
+          {internalId: '11', newId: 'West Kalimantan'},
+          {internalId: '36', newId: 'Papua'},
+          {internalId: '39', newId: 'West Papua'},
         ],
+        data: [
+          {id: 'Aceh', value: '31600', link: '/indonesia/aceh', showLabel: '1'},
+          {id: 'Central Kalimantan', value: '80200', link: '/indonesia/centralkalimantan', showLabel: '1'},
+          {id: 'East Kalimantan', value: '62200', link: '/indonesia/eastkalimantan', showLabel: '1'},
+          {id: 'North Kalimantan', value: '58900', link: '/indonesia/northkalimantan', showLabel: '1'},
+          {id: 'West Kalimantan', value: '61500', link: '/indonesia/westkalimantan', showLabel: '1'},
+          {id: 'Papua', value: '249284', link: '/indonesia/papua', showLabel: '1'},
+          {id: 'West Papua', value: '90500', link: '/indonesia/westpapua', showLabel: '1'},
+        ],
+      // },
+          // {
+          //   id: '01',
+          //   value: '31600',
+          //   // link: 'newchart-json-specialregionofaceh',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '13',
+          //   value: '80200',
+          //   // link: 'newchart-json-centralkalimantan',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '14',
+          //   value: '62200',
+          //   // link: 'newchart-json-eastkalimantan',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '42',
+          //   value: '58900',
+          //   // link: 'newchart-json-northkalimantan',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '11',
+          //   value: '61500',
+          //   link: 'newchart-json-westkalimantan',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '36',
+          //   value: '249284',
+          //   link: 'newchart-json-specialregionofpapua',
+          //   showLabel: '1',
+          // },
+          // {
+          //   id: '39',
+          //   value: '90500',
+          //   link: 'newchart-json-specialregionofwestpapua',
+          //   showLabel: '1',
+          // },
         linkeddata: [
           {
             id: 'specialregionofaceh',
@@ -566,9 +599,10 @@ const dataSource = {
       id: 'mexico',
       linkedchart: {
         chart: {
-          caption: 'Mexico Caption',
-          subcaption: 'Last year',
-          entityFillHoverColor: '#cccccc',
+          caption: 'Mexico',
+          // subcaption: 'Last year',
+          nullentitycolor: '#C3D2DA',
+          entityFillHoverColor: '#87ceeb',
           entityToolText: "<div style='font-size:14px; text-align:center; padding: 2px 4px 2px 4px; color:black;'>$lName</div><div style='font-size:12px; color:black;'>Total Forest Area: <b>$value km<sup>2</sup></b></div>",
           // numberScaleValue: '1,1000,1000',
           // numberScaleUnit: 'K,M,B',
@@ -599,43 +633,43 @@ const dataSource = {
           {
             id: '004',
             value: '5',
-            // link: 'newchart-json-campeche',
+            link: 'newchart-json-campeche',
             showLabel: '1',
           },
           {
             id: '005',
             value: '5',
-            // link: 'newchart-json-chiapas',
+            link: 'newchart-json-chiapas',
             showLabel: '1',
           },
           {
             id: '013',
             value: '5',
-            // link: 'newchart-json-jalisco',
+            link: 'newchart-json-jalisco',
             showLabel: '1',
           },
           {
             id: '019',
             value: '5',
-            // link: 'newchart-json-oaxaca',
+            link: 'newchart-json-oaxaca',
             showLabel: '1',
           },
           {
             id: '022',
             value: '5',
-            // link: 'newchart-json-quintanaroo',
+            link: 'newchart-json-quintanaroo',
             showLabel: '1',
           },
           {
             id: '026',
             value: '5',
-            // link: 'newchart-json-tobasco',
+            link: 'newchart-json-tobasco',
             showLabel: '1',
           },
           {
             id: '030',
             value: '5',
-            // link: 'newchart-json-yucatan',
+            link: 'newchart-json-yucatan',
             showLabel: '1',
           },
         ],
@@ -647,9 +681,10 @@ const dataSource = {
       id: 'peru',
       linkedchart: {
         chart: {
-          caption: 'Peru Caption',
-          subcaption: 'Last year',
-          entityFillHoverColor: '#cccccc',
+          caption: 'Peru',
+          // subcaption: 'Last year',
+          nullentitycolor: '#C3D2DA',
+          entityFillHoverColor: '#87ceeb',
           entityToolText: "<div style='font-size:14px; text-align:center; padding: 2px 4px 2px 4px; color:black;'>$lName</div><div style='font-size:12px; color:black;'>Total Forest Area: <b>$value km<sup>2</sup></b></div>",
           // numberScaleValue: '1,1000,1000',
           // numberScaleUnit: 'K,M,B',
@@ -680,43 +715,43 @@ const dataSource = {
           {
             id: '01',
             value: '5',
-            // link: 'newchart-json-amazonas',
+            link: 'newchart-json-amazonas',
             showLabel: '1',
           },
           {
             id: '10',
             value: '5',
-            // link: 'newchart-json-huanuco',
+            link: 'newchart-json-huanuco',
             showLabel: '1',
           },
           {
             id: '016',
             value: '5',
-            // link: 'newchart-json-loreto',
+            link: 'newchart-json-loreto',
             showLabel: '1',
           },
           {
             id: '17',
             value: '5',
-            // link: 'newchart-json-madrededios',
+            link: 'newchart-json-madrededios',
             showLabel: '1',
           },
           {
             id: '20',
             value: '5',
-            // link: 'newchart-json-Piura',
+            link: 'newchart-json-Piura',
             showLabel: '1',
           },
           {
             id: '22',
             value: '5',
-            // link: 'newchart-json-sanmartin',
+            link: 'newchart-json-sanmartin',
             showLabel: '1',
           },
           {
             id: '25',
             value: '5',
-            // link: 'newchart-json-ucayali',
+            link: 'newchart-json-ucayali',
             showLabel: '1',
           },
         ],
@@ -728,9 +763,10 @@ const dataSource = {
       id: 'colombia',
       linkedchart: {
         chart: {
-          caption: 'Colombia Caption',
-          subcaption: 'Last year',
-          entityFillHoverColor: '#cccccc',
+          caption: 'Colombia',
+          // subcaption: 'Last year',
+          nullentitycolor: '#C3D2DA',
+          entityFillHoverColor: '#87ceeb',
           entityToolText: "<div style='font-size:14px; text-align:center; padding: 2px 4px 2px 4px; color:black;'>$lName</div><div style='font-size:12px; color:black;'>Total Forest Area: <b>$value km<sup>2</sup></b></div>",
           // numberScaleValue: '1,1000,1000',
           // numberScaleUnit: 'K,M,B',
@@ -761,7 +797,7 @@ const dataSource = {
           {
             id: '08',
             value: '5',
-            // link: 'newchart-json-caqueta',
+            link: 'newchart-json-caqueta',
             showLabel: '1',
           },
         ],
@@ -773,9 +809,10 @@ const dataSource = {
       id: 'ecuador',
       linkedchart: {
         chart: {
-          caption: 'Ecuador Caption',
-          subcaption: 'Last year',
-          entityFillHoverColor: '#cccccc',
+          caption: 'Ecuador',
+          // subcaption: 'Last year',
+          nullentitycolor: '#C3D2DA',
+          entityFillHoverColor: '#87ceeb',
           entityToolText: "<div style='font-size:14px; text-align:center; padding: 2px 4px 2px 4px; color:black;'>$lName</div><div style='font-size:12px; color:black;'>Total Forest Area: <b>$value km<sup>2</sup></b></div>",
           // numberScaleValue: '1,1000,1000',
           // numberScaleUnit: 'K,M,B',
@@ -806,7 +843,7 @@ const dataSource = {
           {
             id: '18',
             value: '5',
-            // link: 'newchart-json-pastaza',
+            link: 'newchart-json-pastaza',
             showLabel: '1',
           },
         ],
@@ -818,9 +855,10 @@ const dataSource = {
       id: 'cotedivoire',
       linkedchart: {
         chart: {
-          caption: 'Ivory Coast Caption',
-          subcaption: 'Last year',
-          entityFillHoverColor: '#cccccc',
+          caption: 'Ivory Coast',
+          // subcaption: 'Last year',
+          nullentitycolor: '#C3D2DA',
+          entityFillHoverColor: '#87ceeb',
           entityToolText: "<div style='font-size:14px; text-align:center; padding: 2px 4px 2px 4px; color:black;'>$lName</div><div style='font-size:12px; color:black;'>Total Forest Area: <b>$value km<sup>2</sup></b></div>",
           // numberScaleValue: '1,1000,1000',
           // numberScaleUnit: 'K,M,B',
@@ -851,13 +889,13 @@ const dataSource = {
           {
             id: 'CI.LC',
             value: '5',
-            // link: 'newchart-json-belier',
+            link: 'newchart-json-belier',
             showLabel: '1',
           },
           {
             id: 'CI.MV',
             value: '5',
-            // link: 'newchart-json-cavally',
+            link: 'newchart-json-cavally',
             showLabel: '1',
           },
         ],
@@ -869,9 +907,10 @@ const dataSource = {
       id: 'nigeria',
       linkedchart: {
         chart: {
-          caption: 'Nigeria Caption',
-          subcaption: 'Last year',
-          entityFillHoverColor: '#cccccc',
+          caption: 'Nigeria',
+          // subcaption: 'Last year',
+          nullentitycolor: '#C3D2DA',
+          entityFillHoverColor: '#87ceeb',
           entityToolText: "<div style='font-size:14px; text-align:center; padding: 2px 4px 2px 4px; color:black;'>$lName</div><div style='font-size:12px; color:black;'>Total Forest Area: <b>$value km<sup>2</sup></b></div>",
           // numberScaleValue: '1,1000,1000',
           // numberScaleUnit: 'K,M,B',
@@ -902,7 +941,7 @@ const dataSource = {
           {
             id: 'NG.CR',
             value: '5',
-            // link: 'newchart-json-crossriver',
+            link: 'newchart-json-crossriver',
             showLabel: '1',
           },
         ],
@@ -932,7 +971,8 @@ const chartConfigs = {
           { type: childType },
         ]);
       } else {
-        alert('Now trigger a redirect with React Router!');
+        // TODO: Push to history!
+        // alert('Now trigger a redirect with React Router!');
       }
     },
   },

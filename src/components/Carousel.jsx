@@ -26,6 +26,11 @@ const CarouselArrow = styled.div`
   &:hover {
     opacity: 0.5;
   }
+
+  @media (max-width: 410px) {
+    left: ${({ left }) => left && '10px'};
+    right: ${({ right }) => right && '10px'};
+  }
 `;
 
 const CarouselStyled = styled.div`
@@ -44,7 +49,7 @@ const CarouselSlide = styled.li`
   text-align: center;
   height: 515px;
   width: 290px;
-  padding: 30px;
+  /* padding: 30px; */
 
   @media (max-width: 1025px) {
     height: 50vw;
@@ -56,7 +61,7 @@ const CarouselSlide = styled.li`
     width: 290px;
 
     ${({ isActive }) => isActive && css`
-      place-self: center;
+      /* place-self: center; */
       background-color: white;
       border-radius: 5px;
       box-shadow: 6px 18px 18px rgba(0, 0, 0, 0.08), -6px 18px 18px rgba(0, 0, 0, 0.08);
@@ -72,16 +77,18 @@ const CarouselSlideContent = styled.div`
   place-items: center;
 
   height: 100%;
-  width: 100%
+  width: 100%;
 `;
 
 const CarouselSlideValue = styled.div`
+  align-self: end;
   font-size: 60px;
   /* margin-bottom: 20px; */
 `;
 
 const CarouselSlideDescription = styled.div`
   font-size: 16px;
+  padding: 30px;
 `;
 
 const Dots = styled.ol`
@@ -114,9 +121,11 @@ const Dot = styled.li`
   }
 `;
 
-const Logo = styled.div`
-  place-self: center;
-  background: no-repeat center/100% url(${GCFTFLogo});
+const Image = styled.div`
+  align-self: start;
+  justify-self: center;
+  background: ${({ imageURL }) => `no-repeat center/100% url(${imageURL})`};
+  background-size: cover;
   width: 100%;
   height: 100%;
 `;
@@ -186,7 +195,7 @@ class Carousel extends React.Component {
             isActive={index === activeIndex}
           >
             <CarouselSlideContent>
-              <Logo />
+              <Image imageURL={slide.imageURL}/>
               <CarouselSlideValue>{slide.value}</CarouselSlideValue>
               <CarouselSlideDescription>{slide.content}</CarouselSlideDescription>
             </CarouselSlideContent>
