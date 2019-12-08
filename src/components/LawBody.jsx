@@ -64,7 +64,7 @@ const LawBody = ({ isOpen }) => {
   }
   return (
     <LawBodyGrid isOpen={isOpen}>
-      <LawBodyTitle>General Environmental Law of Brazil</LawBodyTitle>
+      <LawBodyTitle>Environmental Law of Brazil</LawBodyTitle>
       <LawBodyLogo logo={GCFTFLogo} />
       <LawBodySummary>
         <LawBodySummaryTitle>Summary:</LawBodySummaryTitle>

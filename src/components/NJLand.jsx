@@ -84,6 +84,8 @@ const LandGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr 2fr;
+
+  width: 100%;
 `;
 
 const LandTitle = styled.h3`

@@ -12,7 +12,7 @@ import TransparencyAndParticipation from './TransparencyAndParticipation';
 
 const SAFEGUARDS_TAB_LABELS = [
   'Rights & Tenure',
-  'Transparency & Participation',
+  'Transparency & Partic.',
   'Benefits Sharing',
 ];
 
@@ -46,7 +46,7 @@ class Safeguards extends React.Component {
 
     const view =
       activeTab === 'Rights & Tenure' ? <RightsAndTenure />
-        : activeTab === 'Transparency & Participation' ? <TransparencyAndParticipation />
+        : activeTab === 'Transparency & Partic' ? <TransparencyAndParticipation />
         : activeTab === 'Benefits Sharing' ? <BenefitsSharing />
         : null;
 

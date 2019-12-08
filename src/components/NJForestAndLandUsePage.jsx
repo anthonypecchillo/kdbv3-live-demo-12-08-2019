@@ -13,12 +13,11 @@ import Tile from './Tile';
 
 const ForestAndLandUseGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 800px 800px;
+  grid-template-columns: calc(390px - 2%) calc(390px - 2%) calc(390px - 2%) 1fr;
+  grid-template-rows: 800px 800px 800px;
   grid-gap: 2%;
 
   height: 100%;
-  width: 100%;
 `;
 
 const NJForestAndLandUsePage = () => (
@@ -26,13 +25,13 @@ const NJForestAndLandUsePage = () => (
     <Tile gridColumn="1/3">
       <NJLand />
     </Tile>
-    <Tile gridColumn="3/5">
+    <Tile gridColumn="2/4" gridRow="2/3">
       <NJCO2Emissions />
     </Tile>
-    <Tile gridColumn="1/2">
+    <Tile gridColumn="1/2" gridRow="2/3">
       <NJVegetation />
     </Tile>
-    <Tile gridColumn="2/5">
+    <Tile gridColumn="1/4" gridRow="3/4">
       <NJDeforestation />
     </Tile>
   </ForestAndLandUseGrid>

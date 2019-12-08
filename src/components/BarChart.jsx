@@ -253,6 +253,7 @@ const BarChart = ({ data, dataSourceConfig, justify, nationName, stateName }) =>
   const dataSource = new BarDataSource(data, dataSourceConfig);
   const chartConfigs = {
     type: 'column2d',
+    // width: '700',
     width: '700',
     height: '490',
     containerBackgroundOpacity: '0',
