@@ -1,7 +1,3 @@
-/**
- * Copyright 2019-present GCF Task Force. All Rights Reserved.
- */
-
 import React from 'react';
 import styled, { css } from 'styled-components';
 

@@ -12,7 +12,6 @@ import Landing from './Landing';
 import NJPage from './NJPage';
 import Modal from './Modal';
 import NavBar from './NavBar';
-// import UnderConstruction from './UnderConstruction';
 
 import content from '../const/multi-lingual';
 import jurisdictions from '../const/jurisdictions';

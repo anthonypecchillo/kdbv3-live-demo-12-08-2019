@@ -88,7 +88,7 @@ DROP TABLE IF EXISTS law CASCADE;
 CREATE TABLE law (
  id SERIAL PRIMARY KEY,
  law_number INTEGER,
- pub_date DATE,
+ pub_date CHAR(10),
  citation_id INTEGER,
  region_id INTEGER
 );

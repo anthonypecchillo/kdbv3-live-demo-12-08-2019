@@ -14,21 +14,17 @@ import SquareKilometersForestURL from '../assets/images/Square-Kilometers-Forest
 
 const carouselSlidesData = [
   {
-  //   content: 'STATES AND PROVINCES',
-  //   value: '35',
-  // }, {
     content: 'MILLION SQUARE KILOMETERS OF TROPICAL FOREST',
     imageURL: SquareKilometersForestURL,
     value: '4.9',
-  }, {
+  },
+  {
     content: 'BILLION TONNES OF FOREST CARBON',
     imageURL: ForestCarbonURL,
     value: '55',
-  // }, {
-  //   content: 'COUNTRIES',
-  //   value: '10',
-  }, {
-    content: 'WORLD\'s TROPICAL FORESTS',
+  },
+  {
+    content: "WORLD's TROPICAL FORESTS",
     imageURL: TropicalForestURL,
     value: '1/3',
   },

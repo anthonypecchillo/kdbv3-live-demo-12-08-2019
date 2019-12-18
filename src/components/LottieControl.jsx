@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2019-present GCF Task Force. All Rights Reserved.
  */
 

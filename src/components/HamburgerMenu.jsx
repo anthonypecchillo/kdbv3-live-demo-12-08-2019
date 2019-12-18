@@ -72,7 +72,6 @@ const SearchBar = styled.div`
 `;
 
 const SearchBarInput = styled.input`
-
   height: 100%;
   width: 84%;
   /* width: calc(100% - 40px); */
