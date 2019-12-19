@@ -11,9 +11,9 @@ import Tile from './Tile';
 
 const GovernanceGrid = styled.div`
   display: grid;
+  grid-gap: 2%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 80vh;
-  grid-gap: 2%;
 
   height: 100%;
   width: 100%;
@@ -30,6 +30,6 @@ const NJGovernancePage = () => {
       </Tile>
     </GovernanceGrid>
   );
-}
+};
 
 export default NJGovernancePage;

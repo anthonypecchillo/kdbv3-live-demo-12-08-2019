@@ -10,23 +10,23 @@ import Tile from './Tile';
 
 const ReportCardsGrid = styled.div`
   display: grid;
+  grid-gap: 5%;
   grid-template-columns: 1fr;
   grid-template-rows: 600px;
-  grid-gap: 5%;
 
   height: 100%;
   width: 100%;
 `;
 
-const NJReportCardsPage = () => {
-  return (
-    <ReportCardsGrid>
-      <Tile height="600px" width="1000px">
-        <LottieControl />
-        <center><h1>Under Construction!</h1></center>
-      </Tile>
-    </ReportCardsGrid>
-  );
-}
+const NJReportCardsPage = () => (
+  <ReportCardsGrid>
+    <Tile height="600px" width="1000px">
+      <LottieControl />
+      <center>
+        <h1>Under Construction!</h1>
+      </center>
+    </Tile>
+  </ReportCardsGrid>
+);
 
 export default NJReportCardsPage;

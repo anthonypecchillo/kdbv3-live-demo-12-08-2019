@@ -14,26 +14,35 @@ import NJReportCardsPage from './NJReportCardsPage';
 
 const NJBodyStyled = styled.div`
   background-color: #e5e5e5;
-  /* background-color: #fff;
-  background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%); */
+  /* background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%); */
   height: 100%;
-  width: 100vw;
   padding: 2.5%;
+  width: 100vw;
 `;
 
 const NJBody = () => {
-  let { pageId } = useParams();
-  if (!pageId) {
-    pageId = 'No ID!';
-  }
+  const { pageId } = useParams();
+  let view;
 
-  const view =
-    pageId === 'overview' ? <NJOverviewPage />
-      : pageId === 'forests-and-land-use' ? <NJForestAndLandUsePage />
-      : pageId === 'governance' ? <NJGovernancePage />
-      : pageId === 'partnerships' ? <NJPartnershipsPage />
-      : pageId === 'report-cards' ? <NJReportCardsPage />
-      : null;
+  switch (pageId) {
+    case 'overview':
+      view = <NJOverviewPage />;
+      break;
+    case 'forests-and-land-use':
+      view = <NJForestAndLandUsePage />;
+      break;
+    case 'governance':
+      view = <NJGovernancePage />;
+      break;
+    case 'partnerships':
+      view = <NJPartnershipsPage />;
+      break;
+    case 'report-cards':
+      view = <NJReportCardsPage />;
+      break;
+    default:
+      view = null;
+  }
 
   return (
     <NJBodyStyled>

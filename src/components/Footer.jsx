@@ -5,8 +5,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import LanguageSelect from './LanguageSelect';
-
 import CIFORLogo from '../assets/logos/CIFOR.png';
 import EIILogo from '../assets/logos/EII.png';
 import GFWLogo from '../assets/logos/GFW.png';
@@ -20,7 +18,6 @@ const FACEBOOK_URL = 'https://www.facebook.com/gcf.taskforce';
 const CIFOR_URL = 'https://www.cifor.org';
 const EII_URL = 'https://www.earthinnovation.org';
 const GCFTF_URL = 'https://www.gcftf.org';
-const GCFTF_KDB_URL = 'https://www.gcftaskforce-database.org';
 const GFW_URL = 'https://www.globalforestwatch.org';
 const INSTAGRAM_URL = 'https://www.instagram.com/gcftaskforce/';
 const MDA_URL = 'https://www.mda.org.pe/';
@@ -33,12 +30,11 @@ const YOUTUBE_URL = 'https://www.youtube.com/channel/UCI4m4y7gTCa_o75aGBXNOaw';
 
 const FooterGrid = styled.div`
   display: grid;
-  /* grid-area: footer; */
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1.5fr 4.5fr 2fr 1fr;
   align-items: center;
 
-  background-color: #3E522D;
+  background-color: #3e522d;
   color: white;
   height: 352px;
 
@@ -46,26 +42,17 @@ const FooterGrid = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: 1.5fr 1.5fr 2.5fr 1.5fr 3fr 1.5fr;
     grid-row-gap: 20px;
+    grid-template-areas:
+      'backtomainsite2'
+      'navlistgrid'
+      'socialgrid'
+      'withsupportfrom'
+      'acknowledgementsgrid'
+      'copyright';
 
-    grid-template-areas: 'backtomainsite2'
-                         'navlistgrid'
-                         'socialgrid'
-                         'withsupportfrom'
-                         'acknowledgementsgrid'
-                         'copyright';
     height: 405px;
   }
 `;
-
-// const FooterMiniGrid = styled.div`
-//   display: grid;
-//   grid-template-rows: 2fr 4fr 2.5fr .5fr;
-//   align-items: center;
-//
-//   @media (max-width: 765px) {
-//     display: none;
-//   }
-// `;
 
 const AcknowledgementsGrid = styled.div`
   grid-column: 2/3;
@@ -73,23 +60,15 @@ const AcknowledgementsGrid = styled.div`
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* grid-template-columns: repeat(auto-fill, minmax(30%, 1fr)); */
   grid-template-rows: 1fr 1fr;
   grid-row-gap: 22px;
   grid-column-gap: 22px;
-
-  /* grid-template-columns: repeat(auto-fill, minmax(30%, 1fr)); */
   align-items: start;
   justify-items: center;
-  margin: 0 15px;
-  height: 100%;
 
-  @media (max-width: 1025px) {
-    /* grid-column: 2/3;
-    grid-row: 2/5;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-column-gap: 0; */
-  }
+  height: 100%;
+  margin: 0 15px;
 
   @media (max-width: 765px) {
     grid-area: acknowledgementsgrid;
@@ -115,16 +94,15 @@ const FooterTitle2 = styled.h3`
 
   @media (max-width: 765px) {
     grid-area: withsupportfrom;
-    justify-self: center;
-    align-self: center;
+    place-self: center;
   }
 `;
 
 const FooterNavListGrid = styled.div`
   display: grid;
-  /* grid-template-columns: 30px 4fr; */
   grid-template-rows: repeat(4, 1fr);
   grid-row-gap: 15px;
+
   margin: 15px;
 
   @media (max-width: 765px) {
@@ -132,6 +110,7 @@ const FooterNavListGrid = styled.div`
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
     justify-items: center;
+
     margin: 0;
   }
 `;
@@ -139,15 +118,12 @@ const FooterNavListGrid = styled.div`
 const FooterNavListItemGrid = styled.div`
   display: grid;
   grid-template-columns: 30px auto 4fr;
+
   color: white;
   cursor: pointer;
   transition: color 0.4s ease 0.05s;
 
   &:hover {
-    /* color: #582399; */
-    /* color: #b0cf44; */
-    /* color: #c2e645; */
-    /* color: #bfe639; */
     color: #b5db37;
   }
 
@@ -160,76 +136,75 @@ const FooterSocialGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, auto) 50%;
   grid-gap: 15px;
-  /* margin: 0 15px 15px 15px; */
+
   margin-left: 15px;
 
   @media (max-width: 765px) {
     grid-area: socialgrid
     grid-template-columns: repeat(4, auto);
     justify-items: center;
+
     margin-left: 0;
-    /* margin-right: 15px; */
   }
 `;
 
 const Icon = styled.i`
-  /* grid-area: logo; */
   place-self: center;
 `;
 
 const SocialIcon = styled.i`
-  /* grid-area: logo; */
-  color: white;
   place-self: start;
+
+  color: white;
   transition: color 0.6s ease 0s;
+
   &:hover {
-    /* color: #c2e645; */
-    /* color: #bfe639; */
     color: #b5db37;
   }
 `;
 
 const FooterCopyrightText = styled.div`
   grid-row: 4/5;
+
   align-self: start;
+
   margin-left: 15px;
 
   @media (max-width: 765px) {
     grid-area: copyright;
     grid-column: 1/5;
-    text-align: center;
+
+    background-color: black;
+    color: #b5db37;
+    height: 100%;
     line-height: 50px;
     margin: 0;
-    background-color: black;
+    text-align: center;
     width: 100%;
-    height: 100%;
-    color: #b5db37;
   }
 `;
 
 const LogoLink = styled.a`
-  width: 115px;
+  align-self: ${({ row }) => (row ? 'start' : 'end')};
+
   height: 115px;
-  align-self: ${({row}) => row ? 'start' : 'end'};
+  width: 115px;
 
   @media (max-width: 1025px) {
     height: 115px;
     width: 115px;
-
   }
 
   @media (max-width: 765px) {
     height: 50px;
-    width: 50px;
     margin-bottom: 0;
+    width: 50px;
   }
 `;
 
 const Logo = styled.div`
-  /* grid-area: logo; */
   background: ${({ logo }) => `no-repeat center/100% url(${logo}`});
   background-color: white;
-  /* border: 2px solid black; */
   height: 115px;
   width: 115px;
 
@@ -243,18 +218,11 @@ const Logo = styled.div`
     width: 50px;
   }
 `;
-
-// const AcknowledgementsNote = styled.h5`
-//   margin: 0 15px;
-// `;
 
 const BackToMainSiteLink = styled.a`
   text-decoration: none;
 
   @media (max-width: 765px) {
-    /* grid-area: backtomainsite; */
-    /* grid-column: 1/5; */
-    justify-self: center;
     display: none;
   }
 `;
@@ -265,26 +233,18 @@ const BackToMainSiteLink2 = styled.a`
 
   @media (max-width: 765px) {
     grid-area: backtomainsite2;
-    /* grid-column: 1/5; */
     justify-self: center;
-    line-height: 50px;
+
     display: initial;
+    line-height: 50px;
   }
 `;
 
 const Footer = ({ content }) => {
-  const {
-    MORE,
-    WITH_SUPPORT_FROM,
-    ABOUT,
-    SOURCES,
-    CONTACTS,
-    BACK_TO_MAIN_SITE
-  } = content;
+  const { ABOUT, BACK_TO_MAIN_SITE, CONTACTS, MORE, SOURCES, WITH_SUPPORT_FROM } = content;
 
   return (
     <FooterGrid>
-
       <FooterTitle1>{MORE}</FooterTitle1>
 
       <FooterTitle2>{WITH_SUPPORT_FROM}</FooterTitle2>
@@ -352,9 +312,7 @@ const Footer = ({ content }) => {
         </a>
       </FooterSocialGrid>
 
-      <FooterCopyrightText>
-        ©Governors' Climate and Forests Task Force, 2019
-      </FooterCopyrightText>
+      <FooterCopyrightText>©Governors' Climate and Forests Task Force, 2019</FooterCopyrightText>
 
       <BackToMainSiteLink2 href={GCFTF_URL} rel="noopener noreferrer" target="_blank">
         <FooterNavListItemGrid>
@@ -364,12 +322,8 @@ const Footer = ({ content }) => {
       </BackToMainSiteLink2>
 
       <div />
-
     </FooterGrid>
   );
 };
 
 export default Footer;
-
-// From 1025px version of LogoLink:
-// margin-bottom: ${({ marginBottom }) => marginBottom || 0};

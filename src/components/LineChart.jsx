@@ -3,9 +3,9 @@
  */
 
 import React from 'react';
-import FusionCharts from "fusioncharts";
-import charts from "fusioncharts/fusioncharts.charts";
-import ReactFusioncharts from "react-fusioncharts";
+import FusionCharts from 'fusioncharts';
+import charts from 'fusioncharts/fusioncharts.charts';
+import ReactFusioncharts from 'react-fusioncharts';
 
 import styled from 'styled-components';
 
@@ -15,9 +15,11 @@ charts(FusionCharts);
 class LineDataSource {
   constructor(categories, data, { caption, numberSuffix, xAxisName, yAxisName }) {
     this.chart = {
+      caption,
+      numberSuffix,
+      xAxisName,
+      yAxisName,
       lineThickness: '2',
-
-
       showLegend: '1',
       animation: '1',
       animationDuration: '1',
@@ -29,35 +31,37 @@ class LineDataSource {
       showValues: '0',
       placeValuesInside: '0',
       showShadow: '0',
-      // maxColWidth: '40',
       useDataPlotColorForLabels: '0',
       theme: 'fusion',
-      caption: caption,
-      xAxisName: xAxisName,
-      yAxisName: yAxisName,
-
-      captionAlignment: 'center',
       captionOnTop: '1',
-      // captionFont: 'Font Name Here',
       captionFontSize: 18,
       captionFontColor: '#000000',
-      // alignCaptionWithCanvas: '1',
-
       showXAxisLine: '1',
-      // xAxisLineColor: 'HEX CODE HERE',
-      // xAxisLineThickness: '2',
       showYAxisLine: '1',
-      // yAxisLineColor: 'HEX CODE HERE',
-      // yAxisLineThickness: '2',
       showYAxisValues: '1',
       yAxisValuesStep: '5',
       rotateYAxisName: '1',
-      // yAxisNameWidth: ,
       yAxisMinValue: 0,
       yAxisMaxValue: 1200,
+      bgAlpha: '0',
+      canvasBgAlpha: '0',
+      alignCaptionWithCanvas: '1',
+      numDivLines: 30,
+      showAlternateHGridColor: '1',
+      formatNumber: '1',
+      formatNumberScale: '1',
+      decimals: '1',
+      canvasLeftMargin: 10,
+      // maxColWidth: '40',
+      // captionFont: 'Font Name Here',
+      // alignCaptionWithCanvas: '1',
+      // xAxisLineColor: 'HEX CODE HERE',
+      // xAxisLineThickness: '2',
+      // yAxisLineColor: 'HEX CODE HERE',
+      // yAxisLineThickness: '2',
+      // yAxisNameWidth: ,
       // forceYAxisValueDecimals: ,
       // yAxisValueDecimals: ,
-
       // xAxisNameFont: 'Font Name Here',
       // xAxisNameFontColor: 'Hex Code Here',
       // xAxisNameFontSize: 'Number Here',
@@ -82,10 +86,6 @@ class LineDataSource {
       // plotFillRatio: '67',
       // plotGradientColor: '#abc123',
       // usePlotGradientColor: '#123abc',
-
-      bgAlpha: '0',
-      canvasBgAlpha: '0',
-      alignCaptionWithCanvas: '1',
 
       // valueFont: ,
       // valueFontColor: ,
@@ -124,7 +124,6 @@ class LineDataSource {
       // yAxisValueBorderDashGap: ,
       // yAxisValueLink: ,
 
-      numDivLines: 30,
       // divLineColor: 'Hex Code Here',
       // divLineThickness: Number Here,
       // divLineAlpha: ,
@@ -135,12 +134,9 @@ class LineDataSource {
       // zeroPlaneThickness: ,
       // zeroPlaneAlpha: ,
       // showZeroPlaneValue: ,
-      showAlternateHGridColor: '1',
       // alternateHGridColor: ,
       // alternateHGridAlpha: ,
 
-      formatNumber: '1',
-      formatNumberScale: '1',
       // defaultNumberScale: String
       // numberScaleUnit: String
       // numberScaleValue: String
@@ -149,13 +145,11 @@ class LineDataSource {
       // maxScaleRecursion: Number
       // scaleSeparator: String
       // numberPrefix: String
-      numberSuffix: numberSuffix,
       // decimalSeparator: String
       // thousandSeparator: String
       // thousandSeparatorPosition: Number
       // inDecimalSeparator: String
       // inThousandSeparator: String
-      decimals: '1',
       // forceDecimals: Boolean
 
       // showToolTip: '1',
@@ -216,7 +210,6 @@ class LineDataSource {
       // chartRightMargin: Number,
       // chartTopMargin: Number,
       // chartBottomMargin: Number,
-      canvasLeftMargin: 10,
       // canvasRightMargin: Number,
       // canvasTopMargin: Number,
       // canvasBottomMargin: Number,
@@ -244,7 +237,6 @@ class LineDataSource {
       // trendValueBorderDashGap: Number,
     };
 
-    // this.categories = categories;
     this.data = [
       {
         label: '1996',

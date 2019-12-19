@@ -16,7 +16,7 @@ const NJNavGrid = styled.div`
   place-items: center;
 
   background-color: white;
-  border-bottom: 3px solid #3E522D;
+  border-bottom: 3px solid #3e522d;
   height: 100%;
   padding: 0 25px;
   width: 100%;
@@ -25,12 +25,22 @@ const NJNavGrid = styled.div`
 const NJNavLink = styled(NavLink)`
   font-weight: 600;
   height: 100%
-  width: 100%;
-  text-align: center;
-  padding: 0 5px;
   line-height: 60px;
+  padding: 0 5px;
+  text-align: center;
   text-decoration: none;
   transition: color 0.4s ease 0.05s;
+  width: 100%;
+
+  &:active {
+    text-decoration: ${({ underline }) => underline && 'underline solid black'};
+  }
+
+  &:hover {
+    color: #582399;
+    cursor: pointer;
+  }
+
   &:link {
     color: black;
   }
@@ -38,36 +48,27 @@ const NJNavLink = styled(NavLink)`
   &:visited {
     color: black;
   }
-  &:hover {
-    color: #582399;
-    /* color: #b0cf44; */
-    /* color: #c2e645; */
-    /* color: #bfe639; */
-    /* color: #b5db37; */
-    cursor: pointer;
-  }
-  &:active {
-    text-decoration: ${({ underline }) => underline && 'underline solid black'};
-  }
 
   /* @media (max-width: 990px) {
     display: none;
   } */
 `;
 
+// TODO: Give NJNavLinks a uniqueID for key prop
 const NJNav = ({ navLinkList }) => {
-  let { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
+  const linkActiveStyle = { textDecoration: 'underline solid black' };
 
   return (
     <NJNavGrid length={navLinkList.length}>
       {navLinkList.map((navLink, index) => (
-        <NJNavLink key={index} to={`${path}/${navLink.urlText}`} activeStyle={{textDecoration: "underline solid black"}}>
+        <NJNavLink activeStyle={linkActiveStyle} key={index} to={`${path}/${navLink.urlText}`}>
           {navLink.linkText}
         </NJNavLink>
       ))}
       <div />
     </NJNavGrid>
   );
-}
+};
 
 export default NJNav;

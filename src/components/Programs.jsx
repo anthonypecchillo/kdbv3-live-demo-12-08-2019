@@ -10,11 +10,7 @@ import LawList from './LawList';
 import ProgramsOverview from './ProgramsOverview';
 import Tabs from './Tabs';
 
-const PROGRAMS_TAB_LABELS = [
-  'Overview',
-  'Laws & Regulations',
-  'Institutional Frameworks',
-];
+const PROGRAMS_TAB_LABELS = ['Overview', 'Laws & Regulations', 'Institutional Frameworks'];
 
 const ProgramsGrid = styled.div`
   display: grid;
@@ -43,17 +39,26 @@ class Programs extends React.Component {
 
   render() {
     const { activeTab } = this.state;
+    let view;
 
-    const view =
-      activeTab === 'Overview' ? <ProgramsOverview />
-        : activeTab === 'Laws & Regulations' ? <LawList />
-        : activeTab === 'Institutional Frameworks' ? <InstitutionalFrameworksList />
-        : null;
+    switch (activeTab) {
+      case 'Overview':
+        view = <ProgramsOverview />;
+        break;
+      case 'Laws & Regulations':
+        view = <LawList />;
+        break;
+      case 'Institutional Frameworks':
+        view = <InstitutionalFrameworksList />;
+        break;
+      default:
+        view = null;
+    }
 
     return (
       <ProgramsGrid>
         <Tabs
-          activeTab={this.state.activeTab}
+          activeTab={activeTab}
           handleTabClick={this.handleTabClick}
           tabLabels={PROGRAMS_TAB_LABELS}
         />

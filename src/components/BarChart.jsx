@@ -3,9 +3,9 @@
  */
 
 import React from 'react';
-import FusionCharts from "fusioncharts";
-import charts from "fusioncharts/fusioncharts.charts";
-import ReactFusioncharts from "react-fusioncharts";
+import FusionCharts from 'fusioncharts';
+import charts from 'fusioncharts/fusioncharts.charts';
+import ReactFusioncharts from 'react-fusioncharts';
 
 import styled from 'styled-components';
 
@@ -13,8 +13,11 @@ import styled from 'styled-components';
 charts(FusionCharts);
 
 class BarDataSource {
-  constructor(data, { caption, numberSuffix, xAxisName, yAxisName }) {
+  constructor(data, { caption, xAxisName, yAxisName }) {
     this.chart = {
+      caption,
+      xAxisName,
+      yAxisName,
       animation: '1',
       animationDuration: '1',
       animateClockwise: '0',
@@ -25,29 +28,33 @@ class BarDataSource {
       showValues: '1',
       placeValuesInside: '0',
       showShadow: '0',
-      // maxColWidth: '40',
       useDataPlotColorForLabels: '0',
       theme: 'fusion',
-      caption: caption,
-      xAxisName: xAxisName,
-      yAxisName: yAxisName,
-
       captionAlignment: 'center',
       captionOnTop: '1',
-      // captionFont: 'Font Name Here',
       captionFontSize: 18,
       captionFontColor: '#000000',
-      // alignCaptionWithCanvas: '1',
-
       showXAxisLine: '1',
-      // xAxisLineColor: 'HEX CODE HERE',
-      // xAxisLineThickness: '2',
       showYAxisLine: '1',
-      // yAxisLineColor: 'HEX CODE HERE',
-      // yAxisLineThickness: '2',
       showYAxisValues: '1',
       yAxisValuesStep: '3',
       rotateYAxisName: '1',
+      bgAlpha: '0',
+      canvasBgAlpha: '0',
+      alignCaptionWithCanvas: '1',
+      numDivLines: 30,
+      showAlternateHGridColor: '1',
+      formatNumber: '1',
+      formatNumberScale: '1',
+      decimals: '1',
+      canvasLeftMargin: 10,
+      // maxColWidth: '40',
+      // captionFont: 'Font Name Here',
+      // alignCaptionWithCanvas: '1',
+      // xAxisLineColor: 'HEX CODE HERE',
+      // xAxisLineThickness: '2',
+      // yAxisLineColor: 'HEX CODE HERE',
+      // yAxisLineThickness: '2',
       // yAxisNameWidth: ,
       // yAxisMinValue: ,
       // yAxisMaxValue: ,
@@ -78,10 +85,6 @@ class BarDataSource {
       // plotFillRatio: '67',
       // plotGradientColor: '#abc123',
       // usePlotGradientColor: '#123abc',
-
-      bgAlpha: '0',
-      canvasBgAlpha: '0',
-      alignCaptionWithCanvas: '1',
 
       // valueFont: ,
       // valueFontColor: ,
@@ -120,7 +123,6 @@ class BarDataSource {
       // yAxisValueBorderDashGap: ,
       // yAxisValueLink: ,
 
-      numDivLines: 30,
       // divLineColor: 'Hex Code Here',
       // divLineThickness: Number Here,
       // divLineAlpha: ,
@@ -131,12 +133,9 @@ class BarDataSource {
       // zeroPlaneThickness: ,
       // zeroPlaneAlpha: ,
       // showZeroPlaneValue: ,
-      showAlternateHGridColor: '1',
       // alternateHGridColor: ,
       // alternateHGridAlpha: ,
 
-      formatNumber: '1',
-      formatNumberScale: '1',
       // defaultNumberScale: String
       // numberScaleUnit: String
       // numberScaleValue: String
@@ -151,7 +150,6 @@ class BarDataSource {
       // thousandSeparatorPosition: Number
       // inDecimalSeparator: String
       // inThousandSeparator: String
-      decimals: '1',
       // forceDecimals: Boolean
 
       // showToolTip: '1',
@@ -212,7 +210,6 @@ class BarDataSource {
       // chartRightMargin: Number,
       // chartTopMargin: Number,
       // chartBottomMargin: Number,
-      canvasLeftMargin: 10,
       // canvasRightMargin: Number,
       // canvasTopMargin: Number,
       // canvasBottomMargin: Number,
@@ -252,13 +249,12 @@ const BarChartStyled = styled.div`
 const BarChart = ({ data, dataSourceConfig, justify, nationName, stateName }) => {
   const dataSource = new BarDataSource(data, dataSourceConfig);
   const chartConfigs = {
-    type: 'column2d',
-    // width: '700',
-    width: '700',
-    height: '490',
+    dataSource,
     containerBackgroundOpacity: '0',
     dataFormat: 'json',
-    dataSource,
+    height: '490',
+    type: 'column2d',
+    width: '700',
   };
 
   return (

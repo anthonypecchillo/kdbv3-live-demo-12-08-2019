@@ -21,7 +21,6 @@ export default [
     NATION_NAME: 'Brazil',
     STATE_NAME: null,
     URL: '/brazil',
-
   },
   {
     FLAGS: [],
@@ -31,7 +30,6 @@ export default [
     NATION_NAME: 'Indonesia',
     STATE_NAME: null,
     URL: '/indonesia',
-
   },
   {
     FLAGS: [],
@@ -41,7 +39,6 @@ export default [
     NATION_NAME: 'Mexico',
     STATE_NAME: null,
     URL: '/mexico',
-
   },
   {
     FLAGS: [],
@@ -51,7 +48,6 @@ export default [
     NATION_NAME: 'Peru',
     STATE_NAME: null,
     URL: '/peru',
-
   },
   {
     FLAGS: [],
@@ -61,7 +57,6 @@ export default [
     NATION_NAME: 'CoteDivoire',
     STATE_NAME: null,
     URL: '/cotedivoire',
-
   },
   {
     FLAGS: [],
@@ -71,7 +66,6 @@ export default [
     NATION_NAME: 'Colombia',
     STATE_NAME: null,
     URL: '/colombia',
-
   },
   {
     FLAGS: [],
@@ -81,7 +75,6 @@ export default [
     NATION_NAME: 'Ecuador',
     STATE_NAME: null,
     URL: '/ecuador',
-
   },
   {
     FLAGS: [],
@@ -91,7 +84,6 @@ export default [
     NATION_NAME: 'Nigeria',
     STATE_NAME: null,
     URL: '/nigeria',
-
   },
   null,
   null,
@@ -103,7 +95,6 @@ export default [
     NATION_NAME: 'Brazil',
     STATE_NAME: 'Acre',
     URL: '/brazil/acre',
-
   },
   {
     FLAGS: [],
@@ -113,7 +104,6 @@ export default [
     NATION_NAME: 'Indonesia',
     STATE_NAME: 'Aceh',
     URL: '/indonesia/aceh',
-
   },
   {
     FLAGS: [],
@@ -123,7 +113,6 @@ export default [
     NATION_NAME: 'Mexico',
     STATE_NAME: 'Campeche',
     URL: '/mexico/campeche',
-
   },
   {
     FLAGS: [],
@@ -133,7 +122,6 @@ export default [
     NATION_NAME: 'Peru',
     STATE_NAME: 'Amazonas',
     URL: '/peru/amazonas',
-
   },
   {
     FLAGS: [],
@@ -143,7 +131,6 @@ export default [
     NATION_NAME: 'CoteDivoire',
     STATE_NAME: 'Bélier',
     URL: '/cotedivoire/belier',
-
   },
   {
     FLAGS: [],
@@ -153,7 +140,6 @@ export default [
     NATION_NAME: 'Colombia',
     STATE_NAME: 'Caquetá',
     URL: '/colombia/caqueta',
-
   },
   {
     FLAGS: [],
@@ -163,7 +149,6 @@ export default [
     NATION_NAME: 'Ecuador',
     STATE_NAME: 'Pastaza',
     URL: '/ecuador/pastaza',
-
   },
   {
     FLAGS: [],
@@ -173,7 +158,6 @@ export default [
     NATION_NAME: 'Nigeria',
     STATE_NAME: 'Cross River',
     URL: '/nigeria/crossriver',
-
   },
   null,
   null,
@@ -185,7 +169,6 @@ export default [
     NATION_NAME: 'Brazil',
     STATE_NAME: 'Amapá',
     URL: '/brazil/amapa',
-
   },
   {
     FLAGS: [],
@@ -195,7 +178,6 @@ export default [
     NATION_NAME: 'Indonesia',
     STATE_NAME: 'C. Kalimantan',
     URL: '/indonesia/centralkalimantan',
-
   },
   {
     FLAGS: [],
@@ -205,7 +187,6 @@ export default [
     NATION_NAME: 'Mexico',
     STATE_NAME: 'Chiapas',
     URL: '/mexico/chiapas',
-
   },
   {
     FLAGS: [],
@@ -215,7 +196,6 @@ export default [
     NATION_NAME: 'Peru',
     STATE_NAME: 'Huánuco',
     URL: '/peru/huanuco',
-
   },
   {
     FLAGS: [],
@@ -225,7 +205,6 @@ export default [
     NATION_NAME: 'CoteDivoire',
     STATE_NAME: 'Cavally',
     URL: '/cotedivoire/cavally',
-
   },
   null,
   null,
@@ -240,17 +219,15 @@ export default [
     NATION_NAME: 'Brazil',
     STATE_NAME: 'Amazonas',
     URL: '/brazil/amazonas',
-
   },
   {
-    FLAGS: [],
+    FLAGS: [IndonesiaFlagURL, EastKalimantanFlagURL],
     FULL_NAME: 'East Kalimantan, Indonesia',
     HEADER_IMAGE_URL: IndonesiaHeaderImageURL,
     JURISDICTION_TYPE: 'state',
     NATION_NAME: 'Indonesia',
     STATE_NAME: 'E. Kalimantan',
     URL: '/indonesia/eastkalimantan',
-
   },
   {
     FLAGS: [],
@@ -260,7 +237,6 @@ export default [
     NATION_NAME: 'Mexico',
     STATE_NAME: 'Jalisco',
     URL: '/mexico/jalisco',
-
   },
   {
     FLAGS: [],
@@ -270,7 +246,6 @@ export default [
     NATION_NAME: 'Peru',
     STATE_NAME: 'Loreto',
     URL: '/peru/loreto',
-
   },
   null,
   null,
@@ -286,7 +261,6 @@ export default [
     NATION_NAME: 'Brazil',
     STATE_NAME: 'Maranhão',
     URL: '/brazil/maranhao',
-
   },
   {
     FLAGS: [],
@@ -296,7 +270,6 @@ export default [
     NATION_NAME: 'Indonesia',
     STATE_NAME: 'N. Kalimantan',
     URL: '/indonesia/northkalimantan',
-
   },
   {
     FLAGS: [],
@@ -306,7 +279,6 @@ export default [
     NATION_NAME: 'Mexico',
     STATE_NAME: 'Oaxaca',
     URL: '/mexico/oaxaca',
-
   },
   {
     FLAGS: [],
@@ -316,7 +288,6 @@ export default [
     NATION_NAME: 'Peru',
     STATE_NAME: 'Madre de Dios',
     URL: '/peru/madrededios',
-
   },
   null,
   null,
@@ -332,7 +303,6 @@ export default [
     NATION_NAME: 'Brazil',
     STATE_NAME: 'Mato Grosso',
     URL: '/brazil/matogrosso',
-
   },
   {
     FLAGS: [IndonesiaFlagURL, WestKalimantanFlagURL],
@@ -342,7 +312,6 @@ export default [
     NATION_NAME: 'Indonesia',
     STATE_NAME: 'W. Kalimantan',
     URL: '/indonesia/westkalimantan',
-
   },
   {
     FLAGS: [],
@@ -352,7 +321,6 @@ export default [
     NATION_NAME: 'Mexico',
     STATE_NAME: 'Quintana Roo',
     URL: '/mexico/quintanaroo',
-
   },
   {
     FLAGS: [],
@@ -362,7 +330,6 @@ export default [
     NATION_NAME: 'Peru',
     STATE_NAME: 'Piura',
     URL: '/peru/piura',
-
   },
   null,
   null,
@@ -378,7 +345,6 @@ export default [
     NATION_NAME: 'Brazil',
     STATE_NAME: 'Pará',
     URL: '/brazil/para',
-
   },
   {
     FLAGS: [],
@@ -388,7 +354,6 @@ export default [
     NATION_NAME: 'Indonesia',
     STATE_NAME: 'Papua',
     URL: '/indonesia/papua',
-
   },
   {
     FLAGS: [],
@@ -398,7 +363,6 @@ export default [
     NATION_NAME: 'Mexico',
     STATE_NAME: 'Tabasco',
     URL: '/mexico/tabasco',
-
   },
   {
     FLAGS: [],
@@ -408,7 +372,6 @@ export default [
     NATION_NAME: 'Peru',
     STATE_NAME: 'San Martín',
     URL: '/peru/sanmartin',
-
   },
   null,
   null,
@@ -424,7 +387,6 @@ export default [
     NATION_NAME: 'Brazil',
     STATE_NAME: 'Rondônia',
     URL: '/brazil/rondonia',
-
   },
   {
     FLAGS: [],
@@ -434,7 +396,6 @@ export default [
     NATION_NAME: 'Indonesia',
     STATE_NAME: 'West Papua',
     URL: '/indonesia/westpapua',
-
   },
   {
     FLAGS: [],
@@ -444,7 +405,6 @@ export default [
     NATION_NAME: 'Mexico',
     STATE_NAME: 'Yucatán',
     URL: '/mexico/yucatan',
-
   },
   {
     FLAGS: [],
@@ -454,7 +414,6 @@ export default [
     NATION_NAME: 'Peru',
     STATE_NAME: 'Ucayali',
     URL: '/peru/ucayali',
-
   },
   null,
   null,
@@ -470,7 +429,6 @@ export default [
     NATION_NAME: 'Brazil',
     STATE_NAME: 'Roraima',
     URL: '/brazil/roraima',
-
   },
   null,
   null,
@@ -489,7 +447,6 @@ export default [
     NATION_NAME: 'Brazil',
     STATE_NAME: 'Tocantins',
     URL: '/brazil/tocantins',
-
   },
   null,
   null,

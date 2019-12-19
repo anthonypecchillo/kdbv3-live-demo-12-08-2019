@@ -69,15 +69,15 @@ const dataSourceConfig1 = {
 const dataSourceConfig2 = {
   caption: 'Forest Management',
   centerLabel: '$label:<br/><br/>$value',
-  defaultCenterLabel: `Total:<br/><br/>${dataTotal2} km²`,
   numberSuffix: ' km²',
+  defaultCenterLabel: `Total:<br/><br/>${dataTotal2} km²`,
 };
 
 const dataSourceConfig3 = {
   caption: 'Major Vegetation Types',
+  numberSuffix: ' km²',
   xAxisName: 'Vegetation Type',
   yAxisName: 'Land Area (km²)',
-  numberSuffix: ' km²',
 };
 
 const LandGrid = styled.div`
@@ -91,7 +91,6 @@ const LandGrid = styled.div`
 const LandTitle = styled.h3`
   grid-column: 1/3;
   height: 100%;
-  /* padding-top: 20px; */
   margin: 0;
   text-align: center;
   width: 100%;
@@ -100,21 +99,9 @@ const LandTitle = styled.h3`
 const NJLand = () => (
   <LandGrid>
     <LandTitle>Land</LandTitle>
-    <DoughnutChart
-      data={data1}
-      dataSourceConfig={dataSourceConfig1}
-      justify="left"
-    />
-    <DoughnutChart
-      data={data2}
-      dataSourceConfig={dataSourceConfig2}
-      justify="right"
-    />
-    <BarChart
-      data={data3}
-      dataSourceConfig={dataSourceConfig3}
-      justify="left"
-    />
+    <DoughnutChart data={data1} dataSourceConfig={dataSourceConfig1} justify="left" />
+    <DoughnutChart data={data2} dataSourceConfig={dataSourceConfig2} justify="right" />
+    <BarChart data={data3} dataSourceConfig={dataSourceConfig3} justify="left" />
   </LandGrid>
 );
 

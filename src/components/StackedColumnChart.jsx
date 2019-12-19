@@ -3,9 +3,9 @@
  */
 
 import React from 'react';
-import FusionCharts from "fusioncharts";
-import charts from "fusioncharts/fusioncharts.charts";
-import ReactFusioncharts from "react-fusioncharts";
+import FusionCharts from 'fusioncharts';
+import charts from 'fusioncharts/fusioncharts.charts';
+import ReactFusioncharts from 'react-fusioncharts';
 
 import styled from 'styled-components';
 
@@ -15,6 +15,10 @@ charts(FusionCharts);
 class StackedColumnDataSource {
   constructor(categories, data, { caption, numberSuffix, xAxisName, yAxisName }) {
     this.chart = {
+      caption,
+      numberSuffix,
+      xAxisName,
+      yAxisName,
       showLegend: '1',
       animation: '1',
       animationDuration: '1',
@@ -26,32 +30,36 @@ class StackedColumnDataSource {
       showValues: '0',
       placeValuesInside: '0',
       showShadow: '0',
-      // maxColWidth: '40',
       useDataPlotColorForLabels: '0',
       theme: 'fusion',
-      caption: caption,
-      xAxisName: xAxisName,
-      yAxisName: yAxisName,
-
       captionAlignment: 'center',
       captionOnTop: '1',
-      // captionFont: 'Font Name Here',
       captionFontSize: 18,
       captionFontColor: '#000000',
-      // alignCaptionWithCanvas: '1',
-
       showXAxisLine: '1',
-      // xAxisLineColor: 'HEX CODE HERE',
-      // xAxisLineThickness: '2',
       showYAxisLine: '1',
-      // yAxisLineColor: 'HEX CODE HERE',
-      // yAxisLineThickness: '2',
       showYAxisValues: '1',
       yAxisValuesStep: '5',
       rotateYAxisName: '1',
-      // yAxisNameWidth: ,
       yAxisMinValue: 0,
       yAxisMaxValue: 60,
+      bgAlpha: '0',
+      canvasBgAlpha: '0',
+      alignCaptionWithCanvas: '1',
+      numDivLines: 30,
+      showAlternateHGridColor: '1',
+      formatNumber: '1',
+      formatNumberScale: '1',
+      decimals: '1',
+      canvasLeftMargin: 10,
+      // maxColWidth: '40',
+      // captionFont: 'Font Name Here',
+      // alignCaptionWithCanvas: '1',
+      // xAxisLineColor: 'HEX CODE HERE',
+      // xAxisLineThickness: '2',
+      // yAxisLineColor: 'HEX CODE HERE',
+      // yAxisLineThickness: '2',
+      // yAxisNameWidth: ,
       // forceYAxisValueDecimals: ,
       // yAxisValueDecimals: ,
 
@@ -79,10 +87,6 @@ class StackedColumnDataSource {
       // plotFillRatio: '67',
       // plotGradientColor: '#abc123',
       // usePlotGradientColor: '#123abc',
-
-      bgAlpha: '0',
-      canvasBgAlpha: '0',
-      alignCaptionWithCanvas: '1',
 
       // valueFont: ,
       // valueFontColor: ,
@@ -120,8 +124,6 @@ class StackedColumnDataSource {
       // yAxisValueBorderDashLen: ,
       // yAxisValueBorderDashGap: ,
       // yAxisValueLink: ,
-
-      numDivLines: 30,
       // divLineColor: 'Hex Code Here',
       // divLineThickness: Number Here,
       // divLineAlpha: ,
@@ -132,12 +134,8 @@ class StackedColumnDataSource {
       // zeroPlaneThickness: ,
       // zeroPlaneAlpha: ,
       // showZeroPlaneValue: ,
-      showAlternateHGridColor: '1',
       // alternateHGridColor: ,
       // alternateHGridAlpha: ,
-
-      formatNumber: '1',
-      formatNumberScale: '1',
       // defaultNumberScale: String
       // numberScaleUnit: String
       // numberScaleValue: String
@@ -146,13 +144,11 @@ class StackedColumnDataSource {
       // maxScaleRecursion: Number
       // scaleSeparator: String
       // numberPrefix: String
-      numberSuffix: numberSuffix,
       // decimalSeparator: String
       // thousandSeparator: String
       // thousandSeparatorPosition: Number
       // inDecimalSeparator: String
       // inThousandSeparator: String
-      decimals: '1',
       // forceDecimals: Boolean
 
       // showToolTip: '1',
@@ -213,7 +209,6 @@ class StackedColumnDataSource {
       // chartRightMargin: Number,
       // chartTopMargin: Number,
       // chartBottomMargin: Number,
-      canvasLeftMargin: 10,
       // canvasRightMargin: Number,
       // canvasTopMargin: Number,
       // canvasBottomMargin: Number,
@@ -250,7 +245,7 @@ const StackedColumnChartStyled = styled.div`
   justify-self: ${({ justify }) => justify || 'center'};
 `;
 
-const StackedColumnChart = ({ categories, data, dataSourceConfig, justify, nationName, stateName }) => {
+const StackedColumnChart = ({ categories, data, dataSourceConfig, justify }) => {
   const dataSource = new StackedColumnDataSource(categories, data, dataSourceConfig);
   const chartConfigs = {
     type: 'stackedcolumn2d',

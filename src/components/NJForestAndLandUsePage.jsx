@@ -13,9 +13,9 @@ import Tile from './Tile';
 
 const ForestAndLandUseGrid = styled.div`
   display: grid;
+  grid-gap: 2%;
   grid-template-columns: calc(390px - 2%) calc(390px - 2%) calc(390px - 2%) 1fr;
   grid-template-rows: 800px 800px 800px;
-  grid-gap: 2%;
 
   height: 100%;
 `;

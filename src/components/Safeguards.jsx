@@ -10,11 +10,7 @@ import RightsAndTenure from './RightsAndTenure';
 import Tabs from './Tabs';
 import TransparencyAndParticipation from './TransparencyAndParticipation';
 
-const SAFEGUARDS_TAB_LABELS = [
-  'Rights & Tenure',
-  'Transparency & Partic.',
-  'Benefits Sharing',
-];
+const SAFEGUARDS_TAB_LABELS = ['Rights & Tenure', 'Transparency & Partic.', 'Benefits Sharing'];
 
 const SafeguardsGrid = styled.div`
   display: grid;
@@ -43,12 +39,21 @@ class Safeguards extends React.Component {
 
   render() {
     const { activeTab } = this.state;
+    let view;
 
-    const view =
-      activeTab === 'Rights & Tenure' ? <RightsAndTenure />
-        : activeTab === 'Transparency & Partic' ? <TransparencyAndParticipation />
-        : activeTab === 'Benefits Sharing' ? <BenefitsSharing />
-        : null;
+    switch (activeTab) {
+      case 'Rights & Tenure':
+        view = <RightsAndTenure />;
+        break;
+      case 'Transparency & Partic':
+        view = <TransparencyAndParticipation />;
+        break;
+      case 'Benefits Sharing':
+        view = <BenefitsSharing />;
+        break;
+      default:
+        view = null;
+    }
 
     return (
       <SafeguardsGrid>

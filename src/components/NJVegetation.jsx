@@ -5,9 +5,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PieChart from './PieChart';
-import BarChart from './BarChart';
 import DoughnutChart from './DoughnutChart';
+import PieChart from './PieChart';
 
 const data1 = [
   {
@@ -89,21 +88,9 @@ const VegetationGrid = styled.div`
 
 const NJVegetation = () => (
   <VegetationGrid>
-    <DoughnutChart
-      data={data1}
-      dataSourceConfig={dataSourceConfig1}
-      justify="center"
-    />
-    <PieChart
-      data={data3}
-      dataSourceConfig={dataSourceConfig3}
-      justify="center"
-    />
-    <DoughnutChart
-      data={data2}
-      dataSourceConfig={dataSourceConfig2}
-      justify="center"
-    />
+    <DoughnutChart data={data1} dataSourceConfig={dataSourceConfig1} justify="center" />
+    <PieChart data={data3} dataSourceConfig={dataSourceConfig3} justify="center" />
+    <DoughnutChart data={data2} dataSourceConfig={dataSourceConfig2} justify="center" />
   </VegetationGrid>
 );
 

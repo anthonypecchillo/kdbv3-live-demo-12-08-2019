@@ -10,30 +10,37 @@ class LottieControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isStopped: false,
       isPaused: false,
+      isStopped: false,
     };
+
+    this.toggleAnimation = this.toggleAnimation.bind(this);
+  }
+
+  toggleAnimation() {
+    this.setState({ isStopped: true });
   }
 
   render() {
+    const { isPaused, isStopped } = this.state;
     const defaultOptions = {
       loop: true,
       autoplay: true,
       animationData: animationData.default,
       rendererSettings: {
-        preserveAspectRatio: 'xMidYMid slice'
-      }
+        preserveAspectRatio: 'xMidYMid slice',
+      },
     };
 
     return (
       <div>
         <Lottie
-          options={defaultOptions}
           height={450}
+          isPaused={isPaused}
+          isStopped={isStopped}
+          onClick={this.toggleAnimation}
+          options={defaultOptions}
           width={450}
-          isStopped={this.state.isStopped}
-          isPaused={this.state.isPaused}
-          onClick={() => this.setState({isStopped: true})}
         />
       </div>
     );

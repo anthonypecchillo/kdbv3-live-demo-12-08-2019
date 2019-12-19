@@ -73,7 +73,16 @@ class App extends React.Component {
     const { footer, navBar, landingPage } = content[language];
 
     const modalBox = showModal ? <Modal toggleModal={this.toggleModal} /> : null;
-    const hamburgerMenu = showHamburgerMenu ? <HamburgerMenu content={navBar} toggleHamburgerMenu={this.toggleHamburgerMenu} toggleLanguage={this.toggleLanguage} /> : null;
+    const hamburgerMenu = showHamburgerMenu ? (
+      <HamburgerMenu
+        content={navBar}
+        toggleHamburgerMenu={this.toggleHamburgerMenu}
+        toggleLanguage={this.toggleLanguage}
+      />
+    ) : null;
+
+    const stateRoutes = ROUTES.filter(({ JURISDICTION_TYPE }) => JURISDICTION_TYPE === 'state');
+    const nationRoutes = ROUTES.filter(({ JURISDICTION_TYPE }) => JURISDICTION_TYPE === 'nation');
 
     return (
       <AppContainer>
@@ -89,46 +98,50 @@ class App extends React.Component {
           <Route exact path="/">
             <Landing content={landingPage} />
           </Route>
-          {ROUTES.filter(({ JURISDICTION_TYPE }) => JURISDICTION_TYPE === 'state').map(({
-            FLAGS,
-            FULL_NAME,
-            HEADER_IMAGE_URL,
-            JURISDICTION_TYPE,
-            NATION_NAME,
-            STATE_NAME,
-            URL
-          }) => (
-            <Route path={URL} key={FULL_NAME}>
-              <NJPage
-                flags={FLAGS}
-                fullName={FULL_NAME}
-                headerImageURL={HEADER_IMAGE_URL}
-                jurisdictionType={JURISDICTION_TYPE}
-                nationName={NATION_NAME}
-                stateName={STATE_NAME}
-              />
-            </Route>
-          ))}
-          {ROUTES.filter(({ JURISDICTION_TYPE }) => JURISDICTION_TYPE === 'nation').map(({
-            FLAGS,
-            FULL_NAME,
-            HEADER_IMAGE_URL,
-            JURISDICTION_TYPE,
-            NATION_NAME,
-            STATE_NAME,
-            URL
-          }) => (
-            <Route path={URL} key={FULL_NAME}>
-              <NJPage
-                flags={FLAGS}
-                fullName={FULL_NAME}
-                headerImageURL={HEADER_IMAGE_URL}
-                jurisdictionType={JURISDICTION_TYPE}
-                nationName={NATION_NAME}
-                stateName={STATE_NAME}
-              />
-            </Route>
-          ))}
+          {stateRoutes.map(
+            ({
+              FLAGS,
+              FULL_NAME,
+              HEADER_IMAGE_URL,
+              JURISDICTION_TYPE,
+              NATION_NAME,
+              STATE_NAME,
+              URL,
+            }) => (
+              <Route path={URL} key={FULL_NAME}>
+                <NJPage
+                  flags={FLAGS}
+                  fullName={FULL_NAME}
+                  headerImageURL={HEADER_IMAGE_URL}
+                  jurisdictionType={JURISDICTION_TYPE}
+                  nationName={NATION_NAME}
+                  stateName={STATE_NAME}
+                />
+              </Route>
+            )
+          )}
+          {nationRoutes.map(
+            ({
+              FLAGS,
+              FULL_NAME,
+              HEADER_IMAGE_URL,
+              JURISDICTION_TYPE,
+              NATION_NAME,
+              STATE_NAME,
+              URL,
+            }) => (
+              <Route path={URL} key={FULL_NAME}>
+                <NJPage
+                  flags={FLAGS}
+                  fullName={FULL_NAME}
+                  headerImageURL={HEADER_IMAGE_URL}
+                  jurisdictionType={JURISDICTION_TYPE}
+                  nationName={NATION_NAME}
+                  stateName={STATE_NAME}
+                />
+              </Route>
+            )
+          )}
         </Switch>
         <Footer content={footer} />
       </AppContainer>
@@ -137,14 +150,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// <UnderConstruction
-//   endpoint={URL}
-//   navBarContent={navBar}
-//   footerContent={landingPage.footer}
-//   toggleHamburgerMenu={this.toggleHamburgerMenu}
-//   toggleLanguage={this.toggleLanguage}
-//   toggleModal={this.toggleModal}
-//   showHamburgerMenu={showHamburgerMenu}
-//   showModal={showModal}
-// />

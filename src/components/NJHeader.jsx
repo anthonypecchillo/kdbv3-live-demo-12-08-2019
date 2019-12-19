@@ -49,9 +49,9 @@ const NJHeaderGrid = styled.div`
 const NJHeaderTitle = styled.h1`
   grid-column: 2/3;
   grid-row: 1/2;
-
   align-self: center;
   justify-self: start;
+
   color: white;
   margin: 0;
 `;
@@ -59,37 +59,32 @@ const NJHeaderTitle = styled.h1`
 const NJHeaderFlags = styled.div`
   grid-column: 3/4;
   grid-row: 1/2;
-
   display: grid;
   grid-template-columns: auto auto;
   grid-column-gap: 20px;
   align-self: center;
   justify-self: end;
+
   color: white;
 `;
 
 const NJFlag = styled.div`
   place-self: center;
-  background: ${({ flagURL }) => `no-repeat center/100% url(${flagURL})`};
-  width: 72px;
-  height: 50px;
-`;
 
-const Icon = styled.i`
-  /* grid-area: logo; */
-  place-self: center;
-  margin-left: 20px;
+  background: ${({ flagURL }) => `no-repeat center/100% url(${flagURL})`};
+  height: 50px;
+  width: 72px;
 `;
 
 const NJMapContainer = styled.div`
   grid-column: 3/4;
   grid-row: 2/4;
+
   background-color: white;
-  /* border: 2px solid black; */
-  height: 100%;
-  width: 100%;
   box-shadow: 6px 18px 18px rgba(0, 0, 0, 0.08), -6px 18px 18px rgba(0, 0, 0, 0.08);
+  height: 100%;
   overflow: hidden;
+  width: 100%;
 `;
 
 const NJHeader = ({ flags, fullName, headerImageURL, jurisdictionType, nationName, stateName }) => (
@@ -107,6 +102,3 @@ const NJHeader = ({ flags, fullName, headerImageURL, jurisdictionType, nationNam
 );
 
 export default NJHeader;
-
-// <Icon className="far fa-flag fa-3x" />
-// <Icon className="far fa-flag fa-3x" />

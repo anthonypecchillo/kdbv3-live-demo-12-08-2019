@@ -3,9 +3,9 @@
  */
 
 import React from 'react';
-import FusionCharts from "fusioncharts";
-import charts from "fusioncharts/fusioncharts.charts";
-import ReactFusioncharts from "react-fusioncharts";
+import FusionCharts from 'fusioncharts';
+import charts from 'fusioncharts/fusioncharts.charts';
+import ReactFusioncharts from 'react-fusioncharts';
 
 import styled from 'styled-components';
 
@@ -15,6 +15,10 @@ charts(FusionCharts);
 class DoughnutDataSource {
   constructor(data, { caption, centerLabel, defaultCenterLabel, numberSuffix }) {
     this.chart = {
+      caption,
+      centerLabel,
+      defaultCenterLabel,
+      numberSuffix,
       animation: '1',
       animationDuration: '1',
       animateClockwise: '0',
@@ -23,7 +27,6 @@ class DoughnutDataSource {
       showLabels: '1',
       showValues: '0',
       theme: 'fusion',
-      caption: caption,
       captionAlignment: 'center',
       captionOnTop: '1',
       captionFontSize: 18,
@@ -34,13 +37,10 @@ class DoughnutDataSource {
       slicingDistance: 5,
       bgAlpha: '0',
       canvasBgAlpha: '0',
-      defaultCenterLabel: defaultCenterLabel,
       alignCaptionWithCanvas: '0',
       captionpadding: '0',
       decimals: '1',
-      centerLabel: centerLabel,
       showLegend: '0',
-      numberSuffix: numberSuffix,
       formatNumberScale: '0',
       chartRightMargin: '-6',
       // palette: '1',

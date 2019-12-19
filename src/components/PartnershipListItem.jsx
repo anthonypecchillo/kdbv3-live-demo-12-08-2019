@@ -16,8 +16,9 @@ const PartnershipListItemGrid = styled.div`
   font-size: 16px;
   font-weight: 500;
   margin: 0 auto;
-  margin-bottom: ${({ index, isOpen, lastIndex }) => (isOpen && (index !== lastIndex)) ? '45px' : '30px'};
-  margin-top: ${({ index, isOpen }) => (isOpen && (index !== 0)) ? '45px' : '30px'};
+  margin-bottom: ${({ index, isOpen, lastIndex }) =>
+    isOpen && index !== lastIndex ? '45px' : '30px'};
+  margin-top: ${({ index, isOpen }) => (isOpen && index !== 0 ? '45px' : '30px')};
   width: 95%;
 `;
 
@@ -35,12 +36,7 @@ const PartnershipTitle = styled.span`
   align-self: center;
   justify-self: start;
 
-  margin-left: 2.5%
-`;
-
-const PartnershipDate = styled.span`
-  align-self: center;
-  justify-self: end;
+  margin-left: 2.5%;
 `;
 
 const Icon = styled.i`
@@ -51,13 +47,12 @@ const PartnershipTagList = styled.div`
   display: flex;
   align-items: center;
 
-  /* -webkit-overflow-scrolling: touch;   For Momentum Scroll on Mobile */
-
   background-color: white;
   border-radius: 0 0 5px 5px;
   direction: rtl;
   height: 100%;
   overflow-x: auto;
+  /* -webkit-overflow-scrolling: touch;   For Momentum Scroll on Mobile */
   padding-right: 2.5%;
   width: 100%;
 
@@ -99,13 +94,11 @@ class PartnershipListItem extends React.Component {
     const { isOpen } = this.state;
     const chevronClass = isOpen ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
     return (
-      <PartnershipListItemGrid
-        index={index}
-        isOpen={isOpen}
-        lastIndex={partnershipListLength - 1}
-      >
+      <PartnershipListItemGrid index={index} isOpen={isOpen} lastIndex={partnershipListLength - 1}>
         <PartnershipHeader onClick={this.handleChevronClick}>
-          <PartnershipTitle>Acre State Sustainable Development Program - PDSA Phase II</PartnershipTitle>
+          <PartnershipTitle>
+            Acre State Sustainable Development Program - PDSA Phase II
+          </PartnershipTitle>
           <Icon className={chevronClass} />
         </PartnershipHeader>
 

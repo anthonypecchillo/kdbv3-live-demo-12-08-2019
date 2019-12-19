@@ -36,6 +36,19 @@ const dataSourceConfig6 = {
   numberSuffix: ' km²',
 };
 
+const TAG_LIST = [
+  'Tag 1',
+  'Tag 2',
+  'Tag 3',
+  'Tag 4',
+  'Tag 5',
+  'Tag 6',
+  'Tag 7',
+  'Tag 8',
+  'Tag 9',
+  'Tag 10',
+];
+
 const DeforestationGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -82,6 +95,7 @@ const DeforestationTagListItem = styled.li`
   width: 90%;
 `;
 
+// TODO: Use primary key from DB as uniqueID for props
 const NJDeforestation = () => (
   <DeforestationGrid>
     <DeforestationTitle>Deforestation</DeforestationTitle>
@@ -91,35 +105,31 @@ const NJDeforestation = () => (
       gridColumn="1/2"
       justify="left"
     />
-    <LineChart
-      data={null}
-      dataSourceConfig={dataSourceConfig5}
-      gridColumn="2/4"
-      justify="center"
-    />
+    <LineChart data={null} dataSourceConfig={dataSourceConfig5} gridColumn="2/4" justify="center" />
     <DeforestationText>
       <p>
-        The majority of deforestation in Acre occurs along primary and secondary roads as well as rivers. The main driver of deforestation in Acre is cattle ranching (occupying 70% of the total area deforested in 1989 and increasing to 81% in 2004). Factors such as land speculation, lack of zoning and formal designation of public lands, profitability of cattle ranching, and subsidized loans for ranching have created incentives for deforestation throughout the Amazon, including Acre.
+        The majority of deforestation in Acre occurs along primary and secondary roads as well as
+        rivers. The main driver of deforestation in Acre is cattle ranching (occupying 70% of the
+        total area deforested in 1989 and increasing to 81% in 2004). Factors such as land
+        speculation, lack of zoning and formal designation of public lands, profitability of cattle
+        ranching, and subsidized loans for ranching have created incentives for deforestation
+        throughout the Amazon, including Acre.
       </p>
       <p>
-      Historically, the main agents of deforestation agents were owners of mid-size and large farms and ranches, but in recent years smallholder farmers have contributed significantly to deforestation in Acre. The pavement of the BR-317 (completed in 2007) and BR-364 (completed in 2011) highways now connect the southwestern Amazon (including Acre) to Peruvian Pacific coast harbors and is likely to lead to increased deforestation. The risk of deforestation is likely to be most intense along the BR-364 from Sena Madureira to Cruzeiro do Sul.
+        Historically, the main agents of deforestation agents were owners of mid-size and large
+        farms and ranches, but in recent years smallholder farmers have contributed significantly to
+        deforestation in Acre. The pavement of the BR-317 (completed in 2007) and BR-364 (completed
+        in 2011) highways now connect the southwestern Amazon (including Acre) to Peruvian Pacific
+        coast harbors and is likely to lead to increased deforestation. The risk of deforestation is
+        likely to be most intense along the BR-364 from Sena Madureira to Cruzeiro do Sul.
       </p>
     </DeforestationText>
     <div>
-      <DeforestationDriversTitle>
-        Drivers of Deforestation
-      </DeforestationDriversTitle>
+      <DeforestationDriversTitle>Drivers of Deforestation</DeforestationDriversTitle>
       <DeforestationTagList>
-        <DeforestationTagListItem>Tag 1</DeforestationTagListItem>
-        <DeforestationTagListItem>Tag 2</DeforestationTagListItem>
-        <DeforestationTagListItem>Tag 3</DeforestationTagListItem>
-        <DeforestationTagListItem>Tag 4</DeforestationTagListItem>
-        <DeforestationTagListItem>Tag 5</DeforestationTagListItem>
-        <DeforestationTagListItem>Tag 6</DeforestationTagListItem>
-        <DeforestationTagListItem>Tag 7</DeforestationTagListItem>
-        <DeforestationTagListItem>Tag 8</DeforestationTagListItem>
-        <DeforestationTagListItem>Tag 9</DeforestationTagListItem>
-        <DeforestationTagListItem>Tag 10</DeforestationTagListItem>
+        {TAG_LIST.map((tag, index) => (
+          <DeforestationTagListItem key={index}>{tag}</DeforestationTagListItem>
+        ))}
       </DeforestationTagList>
     </div>
   </DeforestationGrid>

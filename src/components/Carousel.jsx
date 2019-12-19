@@ -1,19 +1,17 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import GCFTFLogo from '../assets/logos/GCFTF.png';
-
 const CarouselArrow = styled.div`
-  position: absolute;
-  top: 50%;
-  display: block;
   color: #111;
   cursor: pointer;
+  display: block;
+  left: ${({ left }) => left && '32px'};
   opacity: 0.75;
+  position: absolute;
+  right: ${({ right }) => right && '32px'};
+  top: 50%;
   transform: translateY(-50%);
   transition: opacity 0.15s cubic-bezier(0.4, 0, 1, 1);
-  left: ${({ left }) => left && '32px'};
-  right: ${({ right }) => right && '32px'};
 
   &:focus {
     outline: 0;
@@ -32,20 +30,20 @@ const CarouselArrow = styled.div`
 const CarouselStyled = styled.div`
   margin-top: 50px;
   position: relative;
+
   @media (min-width: 766px) {
     display: none;
   }
 `;
 
 const CarouselSlide = styled.li`
+  display: none;
+  height: 515px;
+  list-style-type: none;
   margin-right: auto;
   margin-left: auto;
-  display: none;
-  list-style-type: none;
   text-align: center;
-  height: 515px;
   width: 290px;
-  /* padding: 30px; */
 
   @media (max-width: 1025px) {
     height: 50vw;
@@ -55,21 +53,20 @@ const CarouselSlide = styled.li`
   @media (max-width: 765px) {
     height: 515px;
     width: 290px;
-
-    ${({ isActive }) => isActive && css`
-      /* place-self: center; */
-      background-color: white;
-      border-radius: 5px;
-      box-shadow: 6px 18px 18px rgba(0, 0, 0, 0.08), -6px 18px 18px rgba(0, 0, 0, 0.08);
-      display: block;
-    `}
+    ${({ isActive }) =>
+      isActive &&
+      css`
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 6px 18px 18px rgba(0, 0, 0, 0.08), -6px 18px 18px rgba(0, 0, 0, 0.08);
+        display: block;
+      `}
   }
 `;
 
 const CarouselSlideContent = styled.div`
   display: grid;
   grid-template-rows: 2fr 1fr 1fr;
-  /* grid-gap: 20px; */
   place-items: center;
 
   height: 100%;
@@ -78,8 +75,8 @@ const CarouselSlideContent = styled.div`
 
 const CarouselSlideValue = styled.div`
   align-self: end;
+
   font-size: 60px;
-  /* margin-bottom: 20px; */
 `;
 
 const CarouselSlideDescription = styled.div`
@@ -88,29 +85,27 @@ const CarouselSlideDescription = styled.div`
 `;
 
 const Dots = styled.ol`
-  /* Pulled these in from the rectangular indicators */
   display: flex;
   flex-direction: row;
   justify-content: center;
 
-  /* These are my original styles */
   list-style: none;
-  width: 100%;
-  padding: 0;
   margin: 0;
   margin-top: 20px;
+  padding: 0;
   text-align: center;
+  width: 100%;
 `;
 
 const Dot = styled.li`
   background-color: ${({ color }) => color};
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
   cursor: pointer;
+  height: 18px;
   margin: 0 9px;
   opacity: ${({ isActive }) => (isActive && '0.75') || '0.15'}
   transition: opacity 0.15s cubic-bezier(0.4, 0, 1, 1);
+  width: 18px;
 
   &:hover {
     opacity: ${({ isActive }) => (isActive && '0.75') || '0.5'}
@@ -120,10 +115,11 @@ const Dot = styled.li`
 const Image = styled.div`
   align-self: start;
   justify-self: center;
+
   background: ${({ imageURL }) => `no-repeat center/100% url(${imageURL})`};
   background-size: cover;
-  width: 100%;
   height: 100%;
+  width: 100%;
 `;
 
 class Carousel extends React.Component {
@@ -179,8 +175,8 @@ class Carousel extends React.Component {
     const { activeIndex } = this.state;
     return (
       <CarouselStyled className="carousel">
-        <CarouselArrow  onClick={e => this.goToPrevSlide(e)} left>
-          <span className='fa fa-2x fa-angle-left' />
+        <CarouselArrow onClick={e => this.goToPrevSlide(e)} left>
+          <span className="fa fa-2x fa-angle-left" />
         </CarouselArrow>
         {slides.map((slide, index) => (
           <CarouselSlide
@@ -191,14 +187,14 @@ class Carousel extends React.Component {
             isActive={index === activeIndex}
           >
             <CarouselSlideContent>
-              <Image imageURL={slide.imageURL}/>
+              <Image imageURL={slide.imageURL} />
               <CarouselSlideValue>{slide.value}</CarouselSlideValue>
               <CarouselSlideDescription>{slide.content}</CarouselSlideDescription>
             </CarouselSlideContent>
           </CarouselSlide>
         ))}
         <CarouselArrow onClick={e => this.goToNextSlide(e)} right>
-          <span className='fa fa-2x fa-angle-right' />
+          <span className="fa fa-2x fa-angle-right" />
         </CarouselArrow>
 
         <Dots className="carousel__indicators">

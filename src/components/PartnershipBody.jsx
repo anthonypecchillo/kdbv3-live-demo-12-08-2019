@@ -43,23 +43,21 @@ const PartnershipText = styled.span`
 
 const PartnershipDescription = styled.div`
   align-self: center;
+
   font-size: 14px;
-  padding-left: 7.26%;
   margin-top: 20px;
   margin-bottom: 20px;
+  padding-left: 7.26%;
 `;
 
 const PartnershipTagList = styled.div`
   display: flex;
   align-items: center;
 
-  /* -webkit-overflow-scrolling: touch;   For Momentum Scroll on Mobile */
-
-  /* background-color: white; */
   border-radius: 0 0 5px 5px;
-  /* direction: rtl; */
   height: 100%;
   overflow-x: auto;
+  /* -webkit-overflow-scrolling: touch;   For Momentum Scroll on Mobile */
   padding-right: 2.5%;
   width: 100%;
 
@@ -82,12 +80,12 @@ const PartnershipTag = styled.div`
 `;
 
 const PartnershipBody = ({ isOpen }) => {
-  // TODO: Conditional Here! If summary is an array, dynamically render list.
-  //                         Else, render as paragraph tag.
+  // TODO: Conditional Here!
+  // If summary is an array, dynamically render list.
+  // Else, render as paragraph tag.
+
   if (!isOpen) {
-    return (
-      <PartnershipBodyGrid isOpen={isOpen} />
-    );
+    return <PartnershipBodyGrid isOpen={isOpen} />;
   }
   return (
     <PartnershipBodyGrid isOpen={isOpen}>
@@ -110,7 +108,18 @@ const PartnershipBody = ({ isOpen }) => {
         <PartnershipStatusStepper activeStep={2} />
       </PartnershipBodyMiniGrid>
       <PartnershipDescription>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in mauris quam. In semper dolor vel nunc porttitor ornare. Maecenas hendrerit urna euismod, sodales orci eget, pulvinar risus. Proin lacinia tincidunt ante, quis feugiat ipsum accumsan id. Sed facilisis urna nisl, in ultricies turpis fermentum eget. Nullam turpis libero, venenatis eu urna eget, dapibus varius mauris. Integer vehicula porttitor vestibulum. Nunc bibendum tortor id egestas commodo. <br/><br/>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam pharetra eleifend felis. Praesent commodo risus nec aliquet maximus. Mauris bibendum volutpat dui. Pellentesque at cursus arcu. Pellentesque consequat aliquet faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in mauris quam. In
+        semper dolor vel nunc porttitor ornare. Maecenas hendrerit urna euismod, sodales orci eget,
+        pulvinar risus. Proin lacinia tincidunt ante, quis feugiat ipsum accumsan id. Sed facilisis
+        urna nisl, in ultricies turpis fermentum eget. Nullam turpis libero, venenatis eu urna eget,
+        dapibus varius mauris. Integer vehicula porttitor vestibulum. Nunc bibendum tortor id
+        egestas commodo.
+        <br />
+        <br />
+        Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        Aliquam pharetra eleifend felis. Praesent commodo risus nec aliquet maximus. Mauris bibendum
+        volutpat dui. Pellentesque at cursus arcu. Pellentesque consequat aliquet faucibus. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit.
       </PartnershipDescription>
     </PartnershipBodyGrid>
   );

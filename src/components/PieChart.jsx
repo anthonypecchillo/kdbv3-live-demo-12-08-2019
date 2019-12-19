@@ -3,9 +3,9 @@
  */
 
 import React from 'react';
-import FusionCharts from "fusioncharts";
-import charts from "fusioncharts/fusioncharts.charts";
-import ReactFusioncharts from "react-fusioncharts";
+import FusionCharts from 'fusioncharts';
+import charts from 'fusioncharts/fusioncharts.charts';
+import ReactFusioncharts from 'react-fusioncharts';
 
 import styled from 'styled-components';
 
@@ -13,8 +13,10 @@ import styled from 'styled-components';
 charts(FusionCharts);
 
 class PieDataSource {
-  constructor(data, { caption, centerLabel, defaultCenterLabel, numberSuffix }) {
+  constructor(data, { caption, numberSuffix }) {
     this.chart = {
+      caption,
+      numberSuffix,
       animation: '1',
       animationDuration: '1',
       animateClockwise: '0',
@@ -23,26 +25,24 @@ class PieDataSource {
       showLabels: '1',
       showValues: '0',
       theme: 'fusion',
-      caption: caption,
       captionAlignment: 'center',
       captionOnTop: '1',
       captionFontSize: 18,
       captionFontColor: '#000000',
-      // doughnutRadius: '75%',
       startingAngle: '210',
       enableSlicing: '1',
       slicingDistance: 5,
       bgAlpha: '0',
       canvasBgAlpha: '0',
-      // defaultCenterLabel: defaultCenterLabel,
       alignCaptionWithCanvas: '0',
       captionpadding: '0',
       decimals: '1',
       centerLabel: '$label:<br/><br/>$value',
       showLegend: '0',
-      numberSuffix: numberSuffix,
       formatNumberScale: '0',
       chartRightMargin: '-6',
+      // doughnutRadius: '75%',
+      // defaultCenterLabel: defaultCenterLabel,
       // palette: '1',
       // paletteColors: '#FF0000, #0372AB, #FF5904',
       // showZeroPies: '0',
@@ -87,7 +87,7 @@ const PieChartStyled = styled.div`
   justify-self: ${({ justify }) => justify || 'center'};
 `;
 
-const PieChart = ({ data, dataSourceConfig, justify, nationName, stateName }) => {
+const PieChart = ({ data, dataSourceConfig, justify }) => {
   const dataSource = new PieDataSource(data, dataSourceConfig);
   const chartConfigs = {
     type: 'pie2d',

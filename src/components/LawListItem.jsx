@@ -16,8 +16,9 @@ const LawListItemGrid = styled.div`
   font-size: 16px;
   font-weight: 500;
   margin: 0 auto;
-  margin-bottom: ${({ index, isOpen, lastIndex }) => (isOpen && (index !== lastIndex)) ? '45px' : '30px'};
-  margin-top: ${({ index, isOpen }) => (isOpen && (index !== 0)) ? '45px' : '30px'};
+  margin-bottom: ${({ index, isOpen, lastIndex }) =>
+    isOpen && index !== lastIndex ? '45px' : '30px'};
+  margin-top: ${({ index, isOpen }) => (isOpen && index !== 0 ? '45px' : '30px')};
   width: 95%;
 `;
 
@@ -35,7 +36,7 @@ const LawTitle = styled.span`
   align-self: center;
   justify-self: start;
 
-  margin-left: 2.5%
+  margin-left: 2.5%;
 `;
 
 const LawDate = styled.span`
@@ -70,7 +71,7 @@ const LawTag = styled.div`
   /* border: 1px solid black;
   border-radius: 10px; */
   height: 70%;
-  line-height: 31px; /* 0.70 (height) times grid row height (48px)...plus a little? */
+  line-height: 31px;
   margin: 0 10px;
   padding: 0 10px;
   text-align: center;
@@ -98,19 +99,13 @@ class LawListItem extends React.Component {
     const { isOpen } = this.state;
     const chevronClass = isOpen ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
     return (
-      <LawListItemGrid
-        index={index}
-        isOpen={isOpen}
-        lastIndex={lawListLength - 1}
-      >
+      <LawListItemGrid index={index} isOpen={isOpen} lastIndex={lawListLength - 1}>
         <LawHeader onClick={this.handleChevronClick}>
           <LawTitle>Law 2308</LawTitle>
           <LawDate>September 22nd, 2020</LawDate>
           <Icon className={chevronClass} />
         </LawHeader>
-
         <LawBody isOpen={isOpen} />
-
         <LawTagList isOpen={isOpen}>
           <LawTag>Forestry</LawTag>
           <LawTag>Environmental</LawTag>

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   en: {
     navBar: {
       NAVIGATE: 'Navigate',
@@ -13,8 +13,8 @@ module.exports = {
         GLOBAL_SUMMARY: 'Global Summary',
       },
       map: {
-        TITLE: 'GCF Task Force National Influence',
-        SUB_TITLE: 'By Number of GCF Task Force States/Provinces',
+        TITLE: 'GCF Task Force',
+        SUB_TITLE: '38 States and Provinces from 10 countries',
         NAVIGATE_FULL_DATABASE: 'Navigate Full Database',
       },
       sellingPoints: {
@@ -47,8 +47,8 @@ module.exports = {
         GLOBAL_SUMMARY: 'Resumen Global',
       },
       map: {
-        TITLE: 'GCF Task Force Influencia Nacional',
-        SUB_TITLE: 'Por Número de Estados/Provincias del GCF Task Force',
+        TITLE: 'GCF Task Force',
+        SUB_TITLE: '38 estados y provincias de 10 países',
         NAVIGATE_FULL_DATABASE: 'Navegar por la Base de Datos Completa',
       },
       sellingPoints: {
@@ -81,8 +81,8 @@ module.exports = {
         GLOBAL_SUMMARY: 'Résumé Global',
       },
       map: {
-        TITLE: 'GCF Task Force Influence Nationale',
-        SUB_TITLE: 'GCF Task Force Influence Nationale',
+        TITLE: 'GCF Task Force',
+        SUB_TITLE: '38 États et provinces de 10 pays',
         NAVIGATE_FULL_DATABASE: 'Naviguer dans la Base de Données Complète',
       },
       sellingPoints: {
@@ -115,8 +115,8 @@ module.exports = {
         GLOBAL_SUMMARY: 'Ringkasan Global',
       },
       map: {
-        TITLE: 'Pengaruh Nasional GCF Task Force',
-        SUB_TITLE: 'Berdasarkan Jumlah Negara/Provinsi GCF Task Force',
+        TITLE: 'GCF Task Force',
+        SUB_TITLE: '38 Negara dan Provinsi dari 10 negara',
         NAVIGATE_FULL_DATABASE: 'Menavigasi Basis Data Lengkap',
       },
       sellingPoints: {
@@ -149,8 +149,8 @@ module.exports = {
         GLOBAL_SUMMARY: 'Resumo Global',
       },
       map: {
-        TITLE: 'Influência Nacional do GCF Task Force',
-        SUB_TITLE: 'Por Número de Estados/Províncias do GCF Task Force',
+        TITLE: 'GCF Task Force',
+        SUB_TITLE: '38 estados e províncias de 10 países',
         NAVIGATE_FULL_DATABASE: 'Navegar no Banco de Dados Completo',
       },
       sellingPoints: {

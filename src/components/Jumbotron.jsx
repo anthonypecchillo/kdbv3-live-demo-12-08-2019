@@ -5,18 +5,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import JumbotronBackgroundImage from '../assets/images/Mau-Forest-Kenya-copy.png';
 import JumbotronBackgroundImage from '../assets/images/LandingBannerCropped.jpg';
 
 const JumbotronGrid = styled.div`
   display: grid;
-  /* grid-area: jumbotron; */
   grid-template-columns: 1fr 1fr;
+
+  background-attachment: fixed;
   background-image: url(${JumbotronBackgroundImage});
+  background-position: top left;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top left;
-  background-attachment: fixed;
   height: 700.8px;
 
   @media (max-width: 765px) {
@@ -32,108 +31,103 @@ const JumbotronMiniGrid = styled.div`
   display: grid;
   grid-template-columns: minmax(460px, 11fr) 9fr;
   grid-template-rows: 1fr 2.5fr 2.5fr 1fr;
-  /* grid-template-rows: 75px 150px 225px 75px; */
-  background-color: rgba(255, 255, 255, 0.60);
-  /* align-items: center; */
+
+  background-color: rgba(255, 255, 255, 0.6);
   padding: 85px 0 85px 0;
 
   @media (max-width: 1025px) {
     grid-template-columns: 1fr 1fr;
+
     padding-right: 30px;
   }
 
   @media (max-width: 765px) {
-    padding-top: 120px;
     grid-template-columns: 8fr 1fr;
+
+    padding-top: 120px;
     padding-left: 60px;
   }
 
   @media (max-width: 460px) {
     grid-template-columns: 99% 1%;
-    padding-top: 121px;
+
     padding-left: 0;
     padding-right: 0;
+    padding-top: 121px;
   }
 `;
 
 const JumbotronBrandText = styled.div`
-  /* height: 100%; */
+  align-self: center;
   font-size: 20px;
   font-weight: 700;
-  /* line-height: 75px; */
   letter-spacing: 3px;
   padding-left: 30px;
   padding-top: 10px;
-  /* text-align: left; */
-  align-self: center;
   width: 100%;
-  /* border: 1px dashed red; */
-  /* color: #582399; */
 
   @media (max-width: 460px) {
-    text-align: center;
     padding-left: 0;
+    text-align: center;
   }
 `;
 
 const JumbotronTitle = styled.div`
-  height: 100%
-  font-size: 60px;
+  font-family: 'helvetica';
+  font-size: 75px;
   font-weight: 900;
-  /* line-height: 75px; */
+  height: 100%
   letter-spacing: 3px;
   padding-left: 30px;
   padding-top: 5px;
-  text-align: left;
-  width: 100%;
-  font-family: 'helvetica';
-  font-size: 75px;
-  text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
-  /* border: 1px dashed red; */
   transition: color 0.4s ease 0.05s;
+  text-align: left;
+  text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
+  width: 100%;
+
   &:hover {
     color: #582399;
     cursor: default;
   }
 
   @media (max-width: 460px) {
-    text-align: center;
-    padding-left: 0;
     font-size: 60px;
+    padding-left: 0;
+    text-align: center;
   }
 `;
 
 const JumbotronDescription = styled.div`
-  height: 100%
   font-size: 16px;
   font-weight: normal;
-  /* line-height: 75px; */
+  height: 100%
   letter-spacing: 1px;
-  line-height: 30px;
+  line-height: 1.8em;
   padding-left: 30px;
   padding-top: 15px;
   text-align: left;
   width: 100%;
-  line-height: 1.8em;
-  /* border: 1px dashed red; */
 
   @media (max-width: 460px) {
-    text-align: center;
-    padding-left: 0;
     place-self: center;
+
+    padding-left: 0;
+    text-align: center;
   }
 `;
 
 const JumbotronButtonGrid = styled.div`
-  place-self: center;
   display: grid;
   grid-template-columns: 30px 5fr 1fr 5fr;
   place-items: center;
+  place-self: center;
+
   height: 100%;
   width: 100%;
-  /* border: 1px dashed red; */
+
   @media (max-width: 460px) {
     grid-template-columns: 5px 5fr 1fr 5fr;
+
     padding-left: 0;
     text-align: center;
     width: 90%;
@@ -141,39 +135,29 @@ const JumbotronButtonGrid = styled.div`
 `;
 
 const JumbotronButton = styled.div`
+  align-items: center;
+  justify-content: center;
+
   background-color: transparent;
-  border: solid black 2px;
   border-radius: 0;
+  border: solid black 2px;
   cursor: pointer !important;
   display: flex;
   font-family: 'Avenir Next';
   height: 60%;
-  align-items: center;
-  justify-content: center;
   transition: border 0.6s ease 0s, background-color 0.6s ease 0s, color 0.6s ease 0s;
   width: 100%;
+
   &:hover {
-    border: solid #582399 2px;
     background-color: #582399;
-    /* border: solid #7442b3 2px;
-    background-color: #7442b3; */
-    /* border: solid #693ba3 2px;
-    background-color: #693ba3; */
-    /* color: #582399; */
+    border: solid #582399 2px;
     color: white;
   }
 `;
 
 const JumbotronButtonText = styled.span`
-  /* transition: color 0.4s ease 0s; */
-  /* color: black; */
-  /* font-family: Arial, Helvetica, sans-serif; */
   font-size: 18px;
   font-weight: 700;
-  /* transition: color 0.4s ease 0s;
-  &:hover {
-    color: #582399;
-  } */
 `;
 
 const Jumbotron = ({ content }) => {
@@ -194,9 +178,7 @@ const Jumbotron = ({ content }) => {
           Database
         </JumbotronTitle>
         <div />
-        <JumbotronDescription>
-          {DESCRIPTION}
-        </JumbotronDescription>
+        <JumbotronDescription>{DESCRIPTION}</JumbotronDescription>
         <div />
         <JumbotronButtonGrid>
           <div />
@@ -211,6 +193,6 @@ const Jumbotron = ({ content }) => {
       </JumbotronMiniGrid>
     </JumbotronGrid>
   );
-}
+};
 
 export default Jumbotron;

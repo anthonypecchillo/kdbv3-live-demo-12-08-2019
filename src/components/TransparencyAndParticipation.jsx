@@ -69,7 +69,7 @@ const content = (
 );
 
 const TransparencyAndParticipationStyled = styled.div`
-  border-top: 3px solid #3E522D;
+  border-top: 3px solid #3e522d;
   height: calc(100% - 2.5%);
   margin-top: 15px;
   overflow-y: scroll;
@@ -78,9 +78,7 @@ const TransparencyAndParticipationStyled = styled.div`
 `;
 
 const TransparencyAndParticipation = () => (
-  <TransparencyAndParticipationStyled>
-    {content}
-  </TransparencyAndParticipationStyled>
+  <TransparencyAndParticipationStyled>{content}</TransparencyAndParticipationStyled>
 );
 
 export default TransparencyAndParticipation;

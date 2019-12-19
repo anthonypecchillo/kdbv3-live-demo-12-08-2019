@@ -1,12 +1,14 @@
+/**
+ * Copyright 2019-present GCF Task Force. All Rights Reserved.
+ */
+
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Typography from '@material-ui/core/Typography';
-
-import styled from 'styled-components';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,24 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function getSteps() {
-  return ['Contract', 'Planned', 'Implement', 'Complete'];
-}
-
-// function getStepContent(step) {
-//   switch (step) {
-//     case 0:
-//       return 'Select campaign settings...';
-//     case 1:
-//       return 'What is an ad group anyways?';
-//     case 2:
-//       return 'This is the bit I really care about!';
-//     case 3:
-//       return 'This is the bit I really care about!';
-//     default:
-//       return 'Unknown step';
-//   }
-// }
+const getSteps = () => ['Contract', 'Planned', 'Implement', 'Complete'];
 
 const PartnershipStatusStepper = ({ activeStep }) => {
   const classes = useStyles();
@@ -61,6 +46,6 @@ const PartnershipStatusStepper = ({ activeStep }) => {
       </Stepper>
     </div>
   );
-}
+};
 
 export default PartnershipStatusStepper;
