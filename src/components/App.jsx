@@ -6,12 +6,15 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
+import About from './About';
+import Contact from './Contact';
 import Footer from './Footer';
 import HamburgerMenu from './HamburgerMenu';
 import Landing from './Landing';
 import NJPage from './NJPage';
 import Modal from './Modal';
 import NavBar from './NavBar';
+import Sources from './Sources';
 
 import content from '../const/multi-lingual';
 import jurisdictions from '../const/jurisdictions';
@@ -96,7 +99,16 @@ class App extends React.Component {
         {hamburgerMenu}
         <Switch>
           <Route exact path="/">
-            <Landing content={landingPage} />
+            <Landing content={landingPage} toggleModal={this.toggleModal} />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/sources">
+            <Sources />
+          </Route>
+          <Route exact path="/contact">
+            <Contact />
           </Route>
           {stateRoutes.map(
             ({
@@ -105,7 +117,7 @@ class App extends React.Component {
               HEADER_IMAGE_URL,
               JURISDICTION_TYPE,
               NATION_NAME,
-              STATE_NAME,
+              JURISDICTION_NAME,
               URL,
             }) => (
               <Route path={URL} key={FULL_NAME}>
@@ -113,9 +125,10 @@ class App extends React.Component {
                   flags={FLAGS}
                   fullName={FULL_NAME}
                   headerImageURL={HEADER_IMAGE_URL}
+                  jurisdictionName={JURISDICTION_NAME}
                   jurisdictionType={JURISDICTION_TYPE}
+                  language={language}
                   nationName={NATION_NAME}
-                  stateName={STATE_NAME}
                 />
               </Route>
             )
@@ -127,7 +140,7 @@ class App extends React.Component {
               HEADER_IMAGE_URL,
               JURISDICTION_TYPE,
               NATION_NAME,
-              STATE_NAME,
+              JURISDICTION_NAME,
               URL,
             }) => (
               <Route path={URL} key={FULL_NAME}>
@@ -136,8 +149,9 @@ class App extends React.Component {
                   fullName={FULL_NAME}
                   headerImageURL={HEADER_IMAGE_URL}
                   jurisdictionType={JURISDICTION_TYPE}
+                  language={language}
                   nationName={NATION_NAME}
-                  stateName={STATE_NAME}
+                  jurisdictionName={JURISDICTION_NAME}
                 />
               </Route>
             )

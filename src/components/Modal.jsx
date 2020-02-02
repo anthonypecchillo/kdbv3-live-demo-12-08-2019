@@ -48,7 +48,7 @@ const MemberStatesGrid = styled.div`
 const ModalFade = styled.div`
   background: rgba(0, 0, 0, 0.6);
   bottom: 0;
-  height: 2300px;
+  height: 3950px;
   left: 0;
   position: absolute;
   right: 0;
@@ -102,7 +102,7 @@ const Modal = ({ toggleModal }) => {
   //   alert('You clicked me!');
   // };
   return (
-    <div>
+    <>
       <ModalBox>
         <MemberStatesGrid>
           {jurisdictions.map((jurisdiction, index) => {
@@ -119,14 +119,14 @@ const Modal = ({ toggleModal }) => {
             }
             return (
               <ModalStateLink key={index} to={jurisdiction.URL} onClick={toggleModal}>
-                {jurisdiction.STATE_NAME}
+                {jurisdiction.JURISDICTION_NAME}
               </ModalStateLink>
             );
           })}
         </MemberStatesGrid>
       </ModalBox>
       <ModalFade onClick={toggleModal} />
-    </div>
+    </>
   );
 };
 

@@ -2,83 +2,47 @@
  * Copyright 2019-present GCF Task Force. All Rights Reserved.
  */
 
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 import React from 'react';
 import styled from 'styled-components';
 
 import BarChart from './BarChart';
+import Loading from './Loading';
 import DoughnutChart from './DoughnutChart';
 
-const data1 = [
-  {
-    label: 'Forest',
-    value: 246856,
-    // color: '#ff69b4',
-  },
-  {
-    label: 'Non-Forest',
-    value: 123456,
-  },
-];
-
-const data2 = [
-  {
-    label: 'Protected',
-    value: 206856,
-    // color: '#ff69b4',
-  },
-  {
-    label: 'Unprotected',
-    value: 163456,
-  },
-];
-
-const data3 = [
-  {
-    label: 'Forest',
-    value: 246856,
-    // color: '#ff69b4',
-  },
-  {
-    label: 'Pasture',
-    value: 100000,
-  },
-  {
-    label: 'Agriculture',
-    value: 20000,
-  },
-  {
-    label: 'Secondary',
-    value: 3000,
-  },
-  {
-    label: 'Other',
-    value: 456,
-  },
-];
-
-const dataTotal1 = data1.reduce((acc, { value }) => acc + value, 0).toLocaleString();
-const dataTotal2 = data2.reduce((acc, { value }) => acc + value, 0).toLocaleString();
-
-const dataSourceConfig1 = {
-  caption: 'Land Distribution',
-  centerLabel: '$label:<br/><br/>$value',
-  defaultCenterLabel: `Total:<br/><br/>${dataTotal1} km²`,
-  numberSuffix: ' km²',
-};
-
-const dataSourceConfig2 = {
-  caption: 'Forest Management',
-  centerLabel: '$label:<br/><br/>$value',
-  numberSuffix: ' km²',
-  defaultCenterLabel: `Total:<br/><br/>${dataTotal2} km²`,
-};
-
-const dataSourceConfig3 = {
-  caption: 'Major Vegetation Types',
-  numberSuffix: ' km²',
-  xAxisName: 'Vegetation Type',
-  yAxisName: 'Land Area (km²)',
-};
+const GET_JURISDICTION_LAND = gql`
+  query getJurisdictionLand($nationName: String!, $jurisdictionName: String!, $languageCode: String!) {
+    jurisdictionByName(nationName: $nationName, jurisdictionName: $jurisdictionName) {
+      id
+      name
+      landArea {
+        amount
+        year
+        citation_id
+      }
+      forestArea {
+        amount
+        units
+        year
+        citation_id
+      }
+      forestManagement {
+        protected
+        unprotected
+      }
+      vegetationComponents {
+        amount
+        percent
+        vegetationCategory {
+          vegetationCategoryTranslate(code: $languageCode) {
+            name
+          }
+        }
+      }
+    }
+  }
+`;
 
 const LandGrid = styled.div`
   display: grid;
@@ -96,13 +60,72 @@ const LandTitle = styled.h3`
   width: 100%;
 `;
 
-const NJLand = () => (
-  <LandGrid>
-    <LandTitle>Land</LandTitle>
-    <DoughnutChart data={data1} dataSourceConfig={dataSourceConfig1} justify="left" />
-    <DoughnutChart data={data2} dataSourceConfig={dataSourceConfig2} justify="right" />
-    <BarChart data={data3} dataSourceConfig={dataSourceConfig3} justify="left" />
-  </LandGrid>
-);
+const NJLand = ({ jurisdiction, language, nation }) => {
+  const { data, loading, error } = useQuery(GET_JURISDICTION_LAND, {
+    variables: { nationName: nation, jurisdictionName: jurisdiction, languageCode: language },
+  });
+  if (loading) return <Loading />;
+  if (error) return <p>ERROR</p>;
+
+  const { forestArea, forestManagement, landArea, vegetationComponents } = data.jurisdictionByName;
+
+  const landDistributionData = [
+    {
+      label: 'Forest',
+      value: Math.round(forestArea.amount),
+      // color: '#ff69b4',
+    },
+    {
+      label: 'Non-Forest',
+      value: Math.round(landArea.amount - forestArea.amount),
+    },
+  ];
+
+  const landDistributionDataSourceConfig = {
+    caption: 'Land Distribution',
+    centerLabel: '$label:<br/><br/>$value',
+    defaultCenterLabel: `Total:<br/><br/>${Math.round(landArea.amount).toLocaleString()} km²`,
+    numberSuffix: ' km²',
+  };
+
+  const forestManagementData = [
+    {
+      label: 'Protected',
+      value: Math.round(forestManagement.protected),
+      // color: '#ff69b4',
+    },
+    {
+      label: 'Unprotected',
+      value: Math.round(forestManagement.unprotected),
+    },
+  ];
+  const forestManagementTotal = forestManagementData.reduce((acc, { value }) => acc + value, 0);
+  const forestManagementDataSourceConfig = {
+    caption: 'Forest Management',
+    centerLabel: '$label:<br/><br/>$value',
+    numberSuffix: ' km²',
+    defaultCenterLabel: `Total:<br/><br/>${Math.round(forestManagementTotal).toLocaleString()} km²`,
+  };
+
+  const vegetationData = vegetationComponents.map(component => {
+    return { label: component.vegetationCategory.vegetationCategoryTranslate.name, value: component.amount };
+  });
+
+  const vegetationDataSourceConfig = {
+    caption: 'Major Vegetation Types',
+    numberSuffix: ' km²',
+    xAxisName: 'Vegetation Type',
+    yAxisName: 'Land Area (km²)',
+  };
+
+  return (
+    <LandGrid>
+      <LandTitle>Land</LandTitle>
+      <DoughnutChart data={landDistributionData} dataSourceConfig={landDistributionDataSourceConfig} justify="left" percentOfTotalColumns={0.5} />
+      <DoughnutChart data={forestManagementData} dataSourceConfig={forestManagementDataSourceConfig} justify="right" percentOfTotalColumns={0.5} />
+      <BarChart data={vegetationData} dataSourceConfig={vegetationDataSourceConfig} justify="left" />
+    </LandGrid>
+  )
+};
 
 export default NJLand;

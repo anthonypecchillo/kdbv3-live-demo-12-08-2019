@@ -14,7 +14,7 @@ export default {
       },
       map: {
         TITLE: 'GCF Task Force',
-        SUB_TITLE: '38 States and Provinces from 10 countries',
+        SUB_TITLE: '38 Member States and Provinces from 10 Countries',
         NAVIGATE_FULL_DATABASE: 'Navigate Full Database',
       },
       sellingPoints: {
@@ -30,7 +30,7 @@ export default {
       ABOUT: ' About',
       SOURCES: ' Sources',
       CONTACTS: ' Contacts',
-      BACK_TO_MAIN_SITE: ' Back to Main Site',
+      BACK_TO_MAIN_SITE: ' GCF Task Force Home',
     },
   },
   es: {
@@ -48,7 +48,7 @@ export default {
       },
       map: {
         TITLE: 'GCF Task Force',
-        SUB_TITLE: '38 estados y provincias de 10 países',
+        SUB_TITLE: '38 Estados Miembros y Provincias de 10 Países',
         NAVIGATE_FULL_DATABASE: 'Navegar por la Base de Datos Completa',
       },
       sellingPoints: {
@@ -64,7 +64,7 @@ export default {
       ABOUT: ' Acerca de',
       SOURCES: ' Fuentes',
       CONTACTS: ' Contactos',
-      BACK_TO_MAIN_SITE: ' Volver al Sitio Principal',
+      BACK_TO_MAIN_SITE: ' GCF Task Force Hogar',
     },
   },
   fr: {
@@ -82,7 +82,7 @@ export default {
       },
       map: {
         TITLE: 'GCF Task Force',
-        SUB_TITLE: '38 États et provinces de 10 pays',
+        SUB_TITLE: '38 États Membres et Provinces de 10 Pays',
         NAVIGATE_FULL_DATABASE: 'Naviguer dans la Base de Données Complète',
       },
       sellingPoints: {
@@ -98,7 +98,7 @@ export default {
       ABOUT: ' À Propos',
       SOURCES: ' Sources',
       CONTACTS: ' Contacts',
-      BACK_TO_MAIN_SITE: ' Retour au Site Principal',
+      BACK_TO_MAIN_SITE: ' GCF Task Force Accueil',
     },
   },
   id: {
@@ -116,7 +116,7 @@ export default {
       },
       map: {
         TITLE: 'GCF Task Force',
-        SUB_TITLE: '38 Negara dan Provinsi dari 10 negara',
+        SUB_TITLE: '38 Negara Anggota dan Provinsi dari 10 Negara',
         NAVIGATE_FULL_DATABASE: 'Menavigasi Basis Data Lengkap',
       },
       sellingPoints: {
@@ -132,7 +132,7 @@ export default {
       ABOUT: ' Tentang',
       SOURCES: ' Sumber',
       CONTACTS: ' Kontak',
-      BACK_TO_MAIN_SITE: ' Kembali ke Situs Utama',
+      BACK_TO_MAIN_SITE: ' GCF Task Force Rumah',
     },
   },
   pt: {
@@ -150,7 +150,7 @@ export default {
       },
       map: {
         TITLE: 'GCF Task Force',
-        SUB_TITLE: '38 estados e províncias de 10 países',
+        SUB_TITLE: '38 Estados-Membros e Províncias de 10 Países',
         NAVIGATE_FULL_DATABASE: 'Navegar no Banco de Dados Completo',
       },
       sellingPoints: {
@@ -166,7 +166,7 @@ export default {
       ABOUT: ' Sobre',
       SOURCES: ' Fontes',
       CONTACTS: ' Contatos',
-      BACK_TO_MAIN_SITE: ' Voltar ao Site Principal',
+      BACK_TO_MAIN_SITE: ' GCF Task Force Casa',
     },
   },
 };

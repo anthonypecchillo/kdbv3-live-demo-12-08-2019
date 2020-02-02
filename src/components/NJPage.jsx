@@ -10,15 +10,20 @@ import NJHeader from './NJHeader';
 import NJBody from './NJBody';
 
 const NJPageGrid = styled.div`
-  display: grid;
+  height: 6000px;
   padding-top: 75px;
-  grid-template-rows: 460px auto;
-
-  height: 3250px;
   width: 100%;
 `;
 
-const NJPage = ({ flags, fullName, headerImageURL, jurisdictionType, nationName, stateName }) => {
+const NJPage = ({
+  flags,
+  fullName,
+  headerImageURL,
+  jurisdictionName,
+  jurisdictionType,
+  language,
+  nationName,
+}) => {
   const { path } = useRouteMatch();
   return (
     <NJPageGrid>
@@ -26,16 +31,21 @@ const NJPage = ({ flags, fullName, headerImageURL, jurisdictionType, nationName,
         flags={flags}
         fullName={fullName}
         headerImageURL={headerImageURL}
+        jurisdictionName={jurisdictionName}
         jurisdictionType={jurisdictionType}
         nationName={nationName}
-        stateName={stateName}
       />
       <Switch>
         <Route exact path={path}>
           <Redirect to={`${path}/overview`} />
         </Route>
         <Route path={`${path}/:pageId`}>
-          <NJBody />
+          <NJBody
+            jurisdictionName={jurisdictionName}
+            jurisdictionType={jurisdictionType}
+            nationName={nationName}
+            language={language}
+          />
         </Route>
       </Switch>
     </NJPageGrid>

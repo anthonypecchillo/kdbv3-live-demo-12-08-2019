@@ -51,27 +51,40 @@ const MapButtonText = styled.span`
   font-size: 18px;
   font-weight: 700;
   padding: 0 25px;
+
+  @media (max-width: 1090px) {
+    font-size: 16px;
+  }
 `;
 
 const MapContainer = styled.div`
   height: 662.5px;
-  width: 100vw;
+  width: 95vw;
 `;
 
-const Map = ({ content }) => {
-  const { TITLE, SUB_TITLE, NAVIGATE_FULL_DATABASE } = content;
-  return (
-    <MapGrid>
-      <MapContainer>
-        <MapTitle>{TITLE}</MapTitle>
-        <MapSubTitle>{SUB_TITLE}</MapSubTitle>
-        <WorldMap />
-      </MapContainer>
-      <MapButton>
-        <MapButtonText>{NAVIGATE_FULL_DATABASE}</MapButtonText>
-      </MapButton>
-    </MapGrid>
-  );
+class Map extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    const { content, toggleModal } = this.props;
+    const { TITLE, SUB_TITLE, NAVIGATE_FULL_DATABASE } = content;
+
+    return (
+      <MapGrid>
+        <MapContainer>
+          <MapTitle>{TITLE}</MapTitle>
+          <MapSubTitle>{SUB_TITLE}</MapSubTitle>
+          <WorldMap />
+        </MapContainer>
+        <MapButton onClick={toggleModal}>
+          <MapButtonText>{NAVIGATE_FULL_DATABASE}</MapButtonText>
+        </MapButton>
+      </MapGrid>
+    );
+  }
 };
 
 export default Map;

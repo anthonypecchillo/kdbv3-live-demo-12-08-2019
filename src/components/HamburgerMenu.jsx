@@ -43,7 +43,7 @@ const SearchBar = styled.div`
   min-width: 252px;
   text-align: center;
 
-  @media (min-width: 991px) {
+  @media (min-width: 1026px) {
     display: none;
   }
 `;
@@ -76,9 +76,9 @@ const SearchBarButton = styled.button`
   font-size: 14px;
 `;
 
-const NavLink1 = styled.div`
+const NavLink = styled.div`
   border-bottom: 1px solid #3e522d;
-  border-top: 1px solid #3e522d;
+  border-top: ${({ isFirstNavLink }) => isFirstNavLink && '1px solid #3e522d'} ;
   font-weight: 600;
   height: 100%
   line-height: 75px;
@@ -92,47 +92,7 @@ const NavLink1 = styled.div`
     cursor: pointer;
   }
 
-  @media (min-width: 991px) {
-    display: none;
-  }
-`;
-
-const NavLink2 = styled.div`
-  border-bottom: 1px solid #3e522d;
-  font-weight: 600;
-  height: 100%
-  line-height: 75px;
-  padding: 0 5px;
-  text-align: left;
-  transition: color 0.4s ease 0.05s;
-  width: 100%;
-
-  &:hover {
-    color: #582399;
-    cursor: pointer;
-  }
-
-  @media (min-width: 991px) {
-    display: none;
-  }
-`;
-
-const NavLink3 = styled.div`
-  border-bottom: 1px solid #3e522d;
-  font-weight: 600;
-  height: 100%
-  line-height: 75px;
-  padding: 0 5px;
-  transition: color 0.4s ease 0.05s;
-  text-align: left;
-  width: 100%;
-
-  &:hover {
-    color: #582399;
-    cursor: pointer;
-  }
-
-  @media (min-width: 991px) {
+  @media (min-width: 1026px) {
     display: none;
   }
 `;
@@ -172,15 +132,15 @@ const HamburgerMenu = ({ content, toggleHamburgerMenu, toggleLanguage }) => {
           <div />
 
           <div />
-          <NavLink1>{ABOUT}</NavLink1>
+          <NavLink isFirstNavLink>{ABOUT}</NavLink>
           <div />
 
           <div />
-          <NavLink2>{NAVIGATE}</NavLink2>
+          <NavLink>{NAVIGATE}</NavLink>
           <div />
 
           <div />
-          <NavLink3>{CONTACT}</NavLink3>
+          <NavLink>{CONTACT}</NavLink>
           <div />
 
           <div />

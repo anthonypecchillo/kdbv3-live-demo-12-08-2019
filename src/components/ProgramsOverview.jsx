@@ -9,6 +9,8 @@ import overviewDiagramURL from '../assets/images/Acre-Programs-Overview.png';
 
 const content = (
   <div>
+    <h1 style={{ color: 'red', textAlign: 'center' }}>Stubbed From Mod Site</h1>
+    <h3 style={{ color: 'red', textAlign: 'center' }}>We don't actually have any content for this section in our current database!</h3>
     <p>
       <img alt="overview-diagram" src={overviewDiagramURL} width="100%" />
     </p>
@@ -59,7 +61,7 @@ const content = (
 
 const ProgramsOverviewStyled = styled.div`
   border-top: 3px solid #3e522d;
-  height: calc(100% - 2.5%);
+  height: calc(100% - 2.5% - 40px);
   margin-top: 15px;
   overflow-y: scroll;
   padding: 15px;

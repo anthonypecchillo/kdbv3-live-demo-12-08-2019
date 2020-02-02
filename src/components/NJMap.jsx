@@ -45,6 +45,7 @@ const NJMapConfig = {
       { internalId: '014', newId: 'Para' },
       { internalId: '022', newId: 'Rondonia' },
       { internalId: '023', newId: 'Roraima' },
+      { internalId: '027', newId: 'Tocantins' },
     ],
     data: [
       { id: 'Acre', value: '148125', link: '/brazil/acre', showLabel: '1' },
@@ -55,6 +56,7 @@ const NJMapConfig = {
       { id: 'Para', value: '861816', link: '/brazil/para', showLabel: '1' },
       { id: 'Rondonia', value: '123111', link: '/brazil/rondonia', showLabel: '1' },
       { id: 'Roraima', value: '147293', link: '/brazil/roraima', showLabel: '1' },
+      { id: 'Tocantins', value: '191073', link: '/brazil/tocantins', showLabel: '1' },
     ],
   },
   indonesia: {
@@ -117,14 +119,14 @@ const NJMapConfig = {
       { id: 'Ucayali', value: '93927', link: '/peru/ucayali', showLabel: '1' },
     ],
   },
-  cotedivoire: {
+  ivorycoast: {
     entityDef: [
       { internalId: 'CI.LC', newId: 'Belier' },
       { internalId: 'CI.MV', newId: 'Cavally' },
     ],
     data: [
-      { id: 'Belier', value: '5', link: '/cotedivoire/belier', showLabel: '1' },
-      { id: 'Cavally', value: '5', link: '/cotedivoire/cavally', showLabel: '1' },
+      { id: 'Belier', value: '826', link: '/ivorycoast/belier', showLabel: '1' },
+      { id: 'Cavally', value: '820', link: '/ivorycoast/cavally', showLabel: '1' },
     ],
   },
   colombia: {
@@ -137,22 +139,25 @@ const NJMapConfig = {
   },
   nigeria: {
     entityDef: [{ internalId: 'NG.CR', newId: 'Cross River' }],
-    data: [{ id: 'Cross River', value: '5', link: '/nigeria/crossriver', showLabel: '1' }],
+    data: [{ id: 'Cross River', value: '2070', link: '/nigeria/crossriver', showLabel: '1' }],
   },
 };
 
 class MapDataSource {
   constructor(nation) {
     this.chart = {
-      entityFillHoverColor: '#cccccc',
+      entityFillHoverColor: '#87ceeb',
       entityToolText: "<div style='font-size:14px; text-align:center; padding: 2px 4px 2px 4px; color:black;'>$lName</div><div style='font-size:12px; color:black;'>Total Forest Area: <b>$value km<sup>2</sup></b></div>",
       numberSuffix: ' km²',
       showLabels: '0',
       theme: 'fusion',
-      nullentitycolor: '#C3D2DA',
+      nullentitycolor: '#c3d2da',
       showLegend: false,
       chartRightMargin: 40,
       chartBottomMargin: 18,
+      bgAlpha: '0',
+      baseFontColor: '#ffffff',
+      // canvasBgAlpha: '1',
     };
 
     this.colorRange = {
@@ -185,18 +190,19 @@ class MapDataSource {
   }
 }
 
-const NJMap = ({ nationName, stateName }) => {
-  const chartType = nationName.toLowerCase();
-  const dataSource = new MapDataSource(chartType);
+const NJMap = ({ nationName, jurisdictionName }) => {
+  const nation = nationName.toLowerCase().split(' ').join('');
+  const chartType = nation === 'ivorycoast' ? 'cotedivoire' : nation;
+  const dataSource = new MapDataSource(nation);
 
-  if (stateName) {
-    const name = stateName || nationName;
+  if (jurisdictionName) {
+    const name = jurisdictionName || nationName;
     const normalizedName = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
     dataSource.data = dataSource.data.map(entity => {
       if (entity.id === normalizedName) {
         const copy = { ...entity };
-        copy.color = '#87ceeb';
+        copy.color = '#2c516e';
         return copy;
       }
       return entity;
@@ -205,6 +211,7 @@ const NJMap = ({ nationName, stateName }) => {
 
   const chartConfigs = {
     type: chartType,
+    containerBackgroundOpacity: '0',
     width: '120%',
     height: '330',
     dataFormat: 'json',

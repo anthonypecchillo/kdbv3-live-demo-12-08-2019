@@ -2,52 +2,61 @@
  * Copyright 2019-present GCF Task Force. All Rights Reserved.
  */
 
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 import React from 'react';
+import ReactHtmlParser from 'react-html-parser';
 import styled from 'styled-components';
 
 import DoughnutChart from './DoughnutChart';
 import LineChart from './LineChart';
+import Loading from './Loading';
 
-const data6 = [
-  {
-    label: 'Still<br/>Forested',
-    value: 148125,
-  },
-  {
-    label: 'Deforested',
-    value: 16096,
-    // color: '#ff69b4',
-  },
-];
-
-const dataTotal6 = data6.reduce((acc, { value }) => acc + value, 0).toLocaleString();
-
-const dataSourceConfig5 = {
-  caption: 'Deforestation Rate',
-  xAxisName: 'Year',
-  yAxisName: 'Deforested Area (km²)',
-  numberSuffix: ' km²',
-};
-
-const dataSourceConfig6 = {
-  caption: 'Total Deforestation',
-  centerLabel: '$label:<br/><br/>$value',
-  defaultCenterLabel: `Original<br/>Forest Area:<br/><br/>${dataTotal6} km²`,
-  numberSuffix: ' km²',
-};
-
-const TAG_LIST = [
-  'Tag 1',
-  'Tag 2',
-  'Tag 3',
-  'Tag 4',
-  'Tag 5',
-  'Tag 6',
-  'Tag 7',
-  'Tag 8',
-  'Tag 9',
-  'Tag 10',
-];
+const GET_JURISDICTION_DEFORESTATION = gql`
+  query getJurisdictionDeforestation($nationName: String!, $jurisdictionName: String!, $languageCode: String!) {
+    jurisdictionByName(nationName: $nationName, jurisdictionName: $jurisdictionName) {
+      id
+      name
+      forestArea {
+      	id
+        name
+        amount
+        year
+        citation_id
+      }
+      originalForestArea {
+      	id
+        name
+        amount
+        year
+        citation_id
+      }
+      deforestationDrivers {
+        id
+        deforestationDriverTranslate(code: $languageCode) {
+          name
+        }
+      }
+      contentJurisdictional {
+        id
+        contentJurisdictionalTranslate(code: $languageCode) {
+          id
+          languageCode
+          driversOfDeforestation
+        }
+      }
+      region {
+        deforestationRates {
+          id
+          amount
+          year
+          units
+          citation_id
+        }
+      }
+    }
+  }
+`;
 
 const DeforestationGrid = styled.div`
   display: grid;
@@ -69,6 +78,7 @@ const DeforestationTitle = styled.h3`
 
 const DeforestationText = styled.div`
   grid-column: 1/3;
+  overflow: scroll;
   padding: 0 5%;
   width: 100%;
 `;
@@ -96,43 +106,79 @@ const DeforestationTagListItem = styled.li`
 `;
 
 // TODO: Use primary key from DB as uniqueID for props
-const NJDeforestation = () => (
-  <DeforestationGrid>
-    <DeforestationTitle>Deforestation</DeforestationTitle>
-    <DoughnutChart
-      data={data6}
-      dataSourceConfig={dataSourceConfig6}
-      gridColumn="1/2"
-      justify="left"
-    />
-    <LineChart data={null} dataSourceConfig={dataSourceConfig5} gridColumn="2/4" justify="center" />
-    <DeforestationText>
-      <p>
-        The majority of deforestation in Acre occurs along primary and secondary roads as well as
-        rivers. The main driver of deforestation in Acre is cattle ranching (occupying 70% of the
-        total area deforested in 1989 and increasing to 81% in 2004). Factors such as land
-        speculation, lack of zoning and formal designation of public lands, profitability of cattle
-        ranching, and subsidized loans for ranching have created incentives for deforestation
-        throughout the Amazon, including Acre.
-      </p>
-      <p>
-        Historically, the main agents of deforestation agents were owners of mid-size and large
-        farms and ranches, but in recent years smallholder farmers have contributed significantly to
-        deforestation in Acre. The pavement of the BR-317 (completed in 2007) and BR-364 (completed
-        in 2011) highways now connect the southwestern Amazon (including Acre) to Peruvian Pacific
-        coast harbors and is likely to lead to increased deforestation. The risk of deforestation is
-        likely to be most intense along the BR-364 from Sena Madureira to Cruzeiro do Sul.
-      </p>
-    </DeforestationText>
-    <div>
-      <DeforestationDriversTitle>Drivers of Deforestation</DeforestationDriversTitle>
-      <DeforestationTagList>
-        {TAG_LIST.map((tag, index) => (
-          <DeforestationTagListItem key={index}>{tag}</DeforestationTagListItem>
-        ))}
-      </DeforestationTagList>
-    </div>
-  </DeforestationGrid>
-);
+const NJDeforestation = ({ jurisdiction, language, nation }) => {
+  const { data, loading, error } = useQuery(GET_JURISDICTION_DEFORESTATION, {
+    variables: { nationName: nation, jurisdictionName: jurisdiction, languageCode: language },
+  });
+  if (loading) return <Loading />;
+  if (error) return <p>ERROR</p>;
+
+  const { driversOfDeforestation } = data.jurisdictionByName.contentJurisdictional.contentJurisdictionalTranslate;
+  const driversOfDeforestationHTML = ReactHtmlParser(driversOfDeforestation);
+
+  const { deforestationDrivers, forestArea, originalForestArea } = data.jurisdictionByName;
+  const totalDeforestationData = [
+    {
+      label: 'Still<br/>Forested',
+      value: Math.round(forestArea.amount),
+    },
+    {
+      label: 'Deforested',
+      value: Math.round(originalForestArea.amount - forestArea.amount),
+      // color: '#ff69b4',
+    },
+  ];
+  const totalDeforestationDataSourceConfig = {
+    caption: 'Total Deforestation',
+    centerLabel: '$label:<br/><br/>$value',
+    defaultCenterLabel: `Original <br/>Forest Area:<br/><br/> ${Math.round(originalForestArea.amount).toLocaleString()} km²`,
+    numberSuffix: ' km²',
+  };
+
+  const { deforestationRates } = data.jurisdictionByName.region;
+  const deforestationRatesData = deforestationRates.map(rate => {
+    return {
+      label: rate.year.toString(),
+      value: rate.amount,
+    };
+  });
+  const deforestationRatesDataSourceConfig = {
+    caption: 'Deforestation Rate',
+    xAxisName: 'Year',
+    yAxisName: 'Deforested Area (km²)',
+    numberSuffix: ' km²',
+  };
+
+  return (
+    <DeforestationGrid>
+      <DeforestationTitle>Deforestation</DeforestationTitle>
+      <DoughnutChart
+        data={totalDeforestationData}
+        dataSourceConfig={totalDeforestationDataSourceConfig}
+        gridColumn="1/2"
+        justify="left"
+        percentOfTotalColumns={0.33}
+      />
+      <LineChart
+        data={deforestationRatesData}
+        dataSourceConfig={deforestationRatesDataSourceConfig}
+        gridColumn="2/4"
+        justify="center"
+        percentOfTotalColumns={0.66}
+      />
+      <DeforestationText>
+        {driversOfDeforestationHTML}
+      </DeforestationText>
+      <div>
+        <DeforestationDriversTitle>Drivers of Deforestation</DeforestationDriversTitle>
+        <DeforestationTagList>
+          {deforestationDrivers.map(driver => (
+            <DeforestationTagListItem key={driver.id}>{driver.deforestationDriverTranslate.name}</DeforestationTagListItem>
+          ))}
+        </DeforestationTagList>
+      </div>
+    </DeforestationGrid>
+  )
+};
 
 export default NJDeforestation;

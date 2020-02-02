@@ -26,7 +26,7 @@ const NavBarGrid = styled.div`
   width: 100%;
   z-index: 999;
 
-  @media (max-width: 990px) {
+  @media (max-width: 1025px) {
     grid-template-columns: 1fr 10fr 1fr;
     grid-template-areas: 'logo navtitle hamburger';
     justify-content: space-between;
@@ -42,7 +42,7 @@ const Logo = styled.div`
   margin-left: 10px;
   width: 75px;
 
-  @media (max-width: 990px) {
+  @media (max-width: 1025px) {
     margin-left: 38.25px;
   }
 
@@ -67,12 +67,34 @@ const NavTitle = styled.div`
     cursor: pointer;
   }
 
-  @media (max-width: 990px) {
+  @media (max-width: 1025px) {
     text-align: center;
+  }
+
+  @media (max-width: 413px) {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 20px 35px 0px 32px;
   }
 `;
 
-const NavLink = styled.div`
+const NavItemLink = styled(Link)`
+  text-decoration: none;
+
+  &:active {
+    text-decoration: ${({ underline }) => underline && 'underline solid black'};
+  }
+
+  &:link {
+    color: black;
+  }
+
+  &:visited {
+    color: black;
+  }
+`;
+
+const NavItem = styled.div`
   grid-area: ${({ gridArea }) => gridArea};
 
   font-weight: 600;
@@ -88,7 +110,7 @@ const NavLink = styled.div`
     cursor: pointer;
   }
 
-  @media (max-width: 990px) {
+  @media (max-width: 1025px) {
     display: none;
   }
 `;
@@ -101,7 +123,7 @@ const SearchBar = styled.div`
   min-width: 252px;
   width: 90%;
 
-  @media (max-width: 990px) {
+  @media (max-width: 1025px) {
     display: none;
   }
 `;
@@ -136,7 +158,8 @@ const SearchBarButton = styled.button`
 
 const HamburgerIcon = styled.i`
   grid-area: hamburger
-  place-self: center;
+  align-self: center;
+  justify-self: right;
 
   font-size: 36px;
   margin-right: 5vw;
@@ -149,11 +172,11 @@ const HamburgerIcon = styled.i`
     cursor: pointer;
   }
 
-  @media (min-width: 991px) {
+  @media (min-width: 1026px) {
     display: none;
   }
 
-  @media (max-width: 990px) {
+  @media (max-width: 1025px) {
     margin-right: 38.25px;
   }
 
@@ -169,10 +192,14 @@ const NavBar = ({ content, toggleHamburgerMenu, toggleLanguage, toggleModal }) =
       <Link to="/">
         <Logo />
       </Link>
-      <NavTitle onClick={toggleModal}>Knowledge Database</NavTitle>
-      <NavLink gridArea="navlink1">{ABOUT}</NavLink>
-      <NavLink gridArea="navlink2">{NAVIGATE}</NavLink>
-      <NavLink gridArea="navlink3">{CONTACT}</NavLink>
+      <NavTitle>Knowledge Database</NavTitle>
+      <NavItemLink to="/about">
+        <NavItem gridArea="navlink1">{ABOUT}</NavItem>
+      </NavItemLink>
+      <NavItem gridArea="navlink2" onClick={toggleModal}>{NAVIGATE}</NavItem>
+      <NavItemLink to="/contact">
+        <NavItem gridArea="navlink3">{CONTACT}</NavItem>
+      </NavItemLink>
       <LanguageSelect toggleLanguage={toggleLanguage} />
       <SearchBar>
         <SearchBarInput placeholder={SEARCH_PLACEHOLDER} type="text" />
