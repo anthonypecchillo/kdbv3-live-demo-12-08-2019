@@ -88,6 +88,8 @@ const DoughnutChartStyled = styled.div`
   grid-row: ${({ gridRow }) => gridRow || null};
   align-self: ${({ align }) => align || 'center'};
   justify-self: ${({ justify }) => justify || 'center'};
+  ${'' /* width: ${({ width }) => width}; */}
+  width: 100%;
 `;
 
 class DoughnutChart extends React.Component {
@@ -129,7 +131,7 @@ class DoughnutChart extends React.Component {
     const dataSource = new DoughnutDataSource(data, dataSourceConfig);
     const chartConfigs = {
       type: 'doughnut2d',
-      width,
+      width: '99%',
       height: '250',
       containerBackgroundOpacity: '0',
       dataFormat: 'json',

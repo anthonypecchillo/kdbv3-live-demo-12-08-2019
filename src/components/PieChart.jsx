@@ -42,6 +42,12 @@ class PieDataSource {
       // centerLabel: '$label:<br/><br/>$value',
       formatNumberScale: '0',
       chartRightMargin: '-6',
+
+      enableSmartLabels: '1',
+      manageLabelOverflow: '1',
+      useEllipsesWhenOverflow: '1',
+      // isSmartLineSlanted: '0',
+
       // minimiseWrappingInLegend: '1',
       // doughnutRadius: '75%',
       // defaultCenterLabel: defaultCenterLabel,
@@ -88,6 +94,7 @@ const PieChartStyled = styled.div`
   align-self: ${({ align }) => align || 'center'};
   justify-self: ${({ justify }) => justify || 'center'};
   ${'' /* width: ${({ width }) => width}; */}
+  width: 100%;
 `;
 
 class PieChart extends React.Component {
@@ -113,6 +120,7 @@ class PieChart extends React.Component {
 
     if (chart) {
       // TODO: Change the first argument to this.props.width???
+      console.log(chart.container.parentElement.parentElement.parentElement.getBoundingClientRect().width * percentOfTotalColumns);
       chart.resizeTo(chart.container.parentElement.parentElement.parentElement.getBoundingClientRect().width * percentOfTotalColumns, chart.height);
     } 
   }
@@ -133,7 +141,7 @@ class PieChart extends React.Component {
       dataFormat: 'json',
       dataSource,
       height,
-      width,
+      width: '99%',
     };
 
     return (

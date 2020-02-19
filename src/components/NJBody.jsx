@@ -7,7 +7,8 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import NationalOverviewPage from './NationalOverviewPage';
-import NationalApproachesPage from './NationalApproachesPage';
+// import NationalApproachesPage from './NationalApproachesPage';
+import NationalForestsAndLandUsePage from './NationalForestsAndLandUsePage';
 import NationalGovernancePage from './NationalGovernancePage';
 import ScrollToTopOnMount from './ScrollToTopOnMount';
 
@@ -18,11 +19,19 @@ import NJPartnershipsPage from './NJPartnershipsPage';
 import NJReportCardsPage from './NJReportCardsPage';
 
 const NJBodyStyled = styled.div`
+  justify-self: center;
+
   background-color: #e5e5e5;
   /* background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%); */
   height: calc(100% - 110px);
   padding: 2.5% 1.25%;
-  width: 100%;
+  width: 90%;
+  max-width: 1480px;
+
+  @media (max-width: 1025px) {
+    width: 100%;
+    max-width: none;
+  }
 `;
 
 const NJBody = ({ nationName, jurisdictionName, jurisdictionType, language }) => {
@@ -34,8 +43,9 @@ const NJBody = ({ nationName, jurisdictionName, jurisdictionType, language }) =>
       case 'overview':
         view = <NationalOverviewPage jurisdictionName={jurisdictionName} nationName={nationName} language={language} />;
         break;
-      case 'approaches':
-        view = <NationalApproachesPage jurisdictionName={jurisdictionName} nationName={nationName} language={language} />;
+      case 'forests-and-land-use':
+        // view = <NationalApproachesPage jurisdictionName={jurisdictionName} nationName={nationName} language={language} />;
+        view = <NationalForestsAndLandUsePage jurisdictionName={jurisdictionName} nationName={nationName} language={language} />;
         break;
       case 'governance':
         view = <NationalGovernancePage jurisdictionName={jurisdictionName} jurisdictionType={jurisdictionType} nationName={nationName} language={language} />;
