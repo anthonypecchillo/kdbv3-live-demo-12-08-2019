@@ -23,7 +23,7 @@ import App from './components/App';
 const cache = new InMemoryCache();
 
 const requestLink = new HttpLink({
-  uri: 'https://1qhhedp1la.execute-api.us-west-1.amazonaws.com/dev/graphql',
+    uri: 'https://1qhhedp1la.execute-api.us-west-1.amazonaws.com/dev/graphql',
 });
 
 // const errorLink = onError(({ graphqlErrors, networkError }) => {
@@ -31,8 +31,8 @@ const requestLink = new HttpLink({
 //   if (networkError) logoutUser();
 // });
 
-const errorLink = onError(({ graphqlErrors, networkError }) => {
-  if (graphqlErrors) console.log('GRAPHQL ERROR: ', graphqlErrors);
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) console.log('GRAPHQL ERROR: ', graphQLErrors);
   if (networkError) console.log('NETWORK ERROR: ', networkError);
 });
 
