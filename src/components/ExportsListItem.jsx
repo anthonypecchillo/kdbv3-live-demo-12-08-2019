@@ -24,8 +24,7 @@ const ExportListItemText = styled.span`
 const ExportsListItem = ({ majorExport }) => {
   console.log(majorExport);
   return (
-    <ExportsListItemGrid key={majorExport.id}>
-      {/* <Icon className="fal fa-acorn" /> */}
+    <ExportsListItemGrid>
       <Icon className={majorExport.faIconClass} />
       <ExportListItemText className="menu-text">
         {majorExport.majorExportTranslate.name}
