@@ -51,7 +51,7 @@ class LineDataSource {
       formatNumber: '1',
       formatNumberScale: '1',
       decimals: '1',
-      canvasLeftMargin: 10,
+      // canvasLeftMargin: 10,
       // maxColWidth: '40',
       // captionFont: 'Font Name Here',
       // alignCaptionWithCanvas: '1',
@@ -270,7 +270,8 @@ class LineChart extends React.Component {
     const { chart } = this.state;
 
     if (chart) {
-      chart.resizeTo(chart.container.parentElement.parentElement.parentElement.getBoundingClientRect().width * percentOfTotalColumns, chart.height);
+      const newWidth = Math.min(window.innerWidth * 0.92, chart.container.parentElement.parentElement.getBoundingClientRect().width);
+      chart.resizeTo(newWidth, chart.height);
     } 
   }
 
@@ -282,12 +283,11 @@ class LineChart extends React.Component {
   }
 
   render() {
-    const { categories, data, dataSourceConfig, gridColumn, gridRow, justify, height = '400' } = this.props;
+    const { categories, data, dataSourceConfig, gridColumn, gridRow, justify, height = '380' } = this.props;
 
     const dataSource = new LineDataSource(categories, data, dataSourceConfig);
     const chartConfigs = {
       type: 'line',
-      // width: '700',
       height,
       width: '99%',
       containerBackgroundOpacity: '0',

@@ -23,7 +23,8 @@ import App from './components/App';
 const cache = new InMemoryCache();
 
 const requestLink = new HttpLink({
-  uri: 'http://localhost:4000/',
+  // uri: 'http://localhost:4000/',
+  uri: 'https://1qhhedp1la.execute-api.us-west-1.amazonaws.com/dev/graphql',
 });
 
 // const errorLink = onError(({ graphqlErrors, networkError }) => {
@@ -54,6 +55,12 @@ const client = new ApolloClient({
       partialRefetch: true,
     },
   },
+});
+
+// Enable FusionChart instances to render in all browsers
+// Source: https://stackoverflow.com/questions/25713345/fusioncharts-not-rendering-properly-when-base-tag-included-in-html-head
+window.eve.on('raphael.new', function () {
+  this.raphael._url = this.raphael._g.win.location.href.replace(/#.*?$/, '');
 });
 
 ReactDOM.render(
