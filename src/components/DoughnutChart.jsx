@@ -43,40 +43,6 @@ class DoughnutDataSource {
       showLegend: '0',
       formatNumberScale: '0',
       chartRightMargin: '0',
-      // palette: '1',
-      // paletteColors: '#FF0000, #0372AB, #FF5904',
-      // showZeroPies: '0',
-      // showPercentInToolTip: '1',
-      // labelSepChar: ',',
-      // clickURL: '/#',
-      // clickURLOverridesPlotLinks: '',
-      // useDataPlotColorForLabels: '0',
-      // hasRTLText: '0',
-      // plotHighlightEffect: 'fadeout|color=#ff0000, alpha=60',
-      // showPrintMenuItem: '0',
-
-      // subcaption: 'No Subcaption Necessary',
-
-      // subCaptionFontSize: 10,
-      // captionFont: 'Font Name Here',
-      // subCaptionFont: 'Font Name Here',
-      // subCaptionFontColor: 'Hex Code Here',
-      // captionFontBold: '1',
-      // subCaptionFontBold: '1',
-      // alignCaptionWithCanvas: '0',
-      // captionHorizontalPadding: 0,
-      // use3DLighting: '1',
-      // showShadow: '1',
-
-      // pieRadius: '90%',
-      // enableRotation: '1',
-      // enableMultiSlicing: '1',
-
-      // captionPadding: '-50',
-      // chartTopMargin: '-80',
-      // paletteColors: '#FF0000, #0372AB, #FF5904',
-      // plottooltext: '<b>$percentValue</b> of our Android users are on <b>$label</b>',
-      // legendPosition: 'right',
     };
 
     this.data = data;
@@ -84,13 +50,14 @@ class DoughnutDataSource {
 }
 
 const DoughnutChartStyled = styled.div`
+  grid-area: ${({ gridArea }) => gridArea || null};
   grid-column: ${({ gridColumn }) => gridColumn || null};
   grid-row: ${({ gridRow }) => gridRow || null};
   align-self: ${({ align }) => align || 'center'};
   justify-self: ${({ justify }) => justify || 'center'};
-  ${'' /* width: 100%; */}
-  width: ${({ width }) => `${width}px` || '100%'};
-  ${'' /* max-width: ${({ maxWidth }) => `${maxWidth}px` || null}; */}
+  width: 100%;
+  max-width: ${({ maxWidth }) => `${maxWidth}px` || null};
+  float: ${({ float }) => float || null };
 `;
 
 class DoughnutChart extends React.Component {
@@ -103,7 +70,6 @@ class DoughnutChart extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.resize);
-    window.dispatchEvent(new Event('resize'));
   }
 
   componentWillUnmount() {
@@ -111,12 +77,11 @@ class DoughnutChart extends React.Component {
   }
 
   resize = () => { 
-    // const { maxWidth, percentOfTotalColumns } = this.props;
-    const { width, percentOfTotalColumns } = this.props;
+    const { maxWidth, percentOfTotalColumns } = this.props;
     const { chart } = this.state;
 
     if (chart) {
-      const newWidth = Math.min(chart.container.parentElement.parentElement.parentElement.getBoundingClientRect().width * percentOfTotalColumns, width);
+      const width = Math.min(chart.container.parentElement.parentElement.parentElement.getBoundingClientRect().width * percentOfTotalColumns, maxWidth);
       chart.resizeTo(width, chart.height);
     } 
   }
@@ -124,17 +89,15 @@ class DoughnutChart extends React.Component {
   handleRender = (chart) => {
     if (!this.state.chart) {
       this.setState({ chart }, this.resize);
-
     }
   }
 
   render() {
-    const { align, data, dataSourceConfig, gridColumn, gridRow, height = '250', justify, width } = this.props;
-
+    const { align, data, dataSourceConfig, float, gridArea, gridColumn, gridRow, height = '250', justify, maxWidth } = this.props;
     const dataSource = new DoughnutDataSource(data, dataSourceConfig);
     const chartConfigs = {
       type: 'doughnut2d',
-      width: '99%',
+      width: '90%',
       height,
       containerBackgroundOpacity: '0',
       dataFormat: 'json',
@@ -142,7 +105,7 @@ class DoughnutChart extends React.Component {
     };
 
     return (
-      <DoughnutChartStyled gridColumn={gridColumn} gridRow={gridRow} align={align} justify={justify} width={width}>
+      <DoughnutChartStyled gridArea={gridArea} gridColumn={gridColumn} gridRow={gridRow} align={align} justify={justify} maxWidth={maxWidth} float={float}>
         <ReactFusioncharts {...chartConfigs} onRender={this.handleRender} />
       </DoughnutChartStyled>
     );
