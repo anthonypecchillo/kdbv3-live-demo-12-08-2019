@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import NJHeader from './NJHeader';
 import NJBody from './NJBody';
 
-import Wood from '../assets/icons/wood1.jpg';
+// import Wood from '../assets/icons/wood1.jpg';
 
 const NJPageGrid = styled.div`
   display: grid;
@@ -20,6 +20,14 @@ const NJPageGrid = styled.div`
   height: auto;
   padding-top: 75px;
   width: 100%;
+
+  @media (max-width: 1025px) {
+    grid-template-rows: 345px auto;
+  }
+
+  @media (max-width: 765px) {
+    grid-template-rows: 230px auto;
+  }
 `;
 
 const NJPage = ({

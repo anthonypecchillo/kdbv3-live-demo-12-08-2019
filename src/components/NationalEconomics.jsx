@@ -18,17 +18,20 @@ const GET_NATION_ECONOMICS = gql`
       id
       name
       humanDevelopmentIndex {
+        id
         amount
         year
         citation_id
       }
       perCapitaIncome {
+        id
         amount
         units
         year
         citation_id
       }
       gdp {
+        id
         amount
         units
         year
@@ -119,22 +122,6 @@ const EconomicsTagListContainer = styled.div`
   width: 100%;
 `;
 
-const EconomicsTagList = styled.ul`
-  list-style-type: none;
-  overflow: hidden;
-  overflow-y: scroll;
-  height: 100px;
-  width: 100%;
-`;
-
-const EconomicsTagListItem = styled.li`
-  border: 1px solid black;
-  background-color: tomato;
-  height: 50px;
-  margin: 15px 0;
-  width: 90%;
-`;
-
 const NationalEconomics = ({ language, nationName }) => {
   const { data, loading, error } = useQuery(GET_NATION_ECONOMICS, {
     variables: { name: nationName, languageCode: language },
@@ -182,8 +169,9 @@ const NationalEconomics = ({ language, nationName }) => {
   const gdpBreakdownDataSourceConfig = {
     caption: 'GDP Breakdown',
     numberSuffix: '%',
-    showLabels: '0',
-    showLegend: '1',
+    showLabels: '1',
+    showLegend: '0',
+    pieRadius: '90',
   };
 
   return (
@@ -197,7 +185,7 @@ const NationalEconomics = ({ language, nationName }) => {
       <EconomicsTotalTitle>National GDP</EconomicsTotalTitle>
       <EconomicsTotalValue>{GDP}</EconomicsTotalValue>
       <EconomicsTotalNationalPercent>{PERCENTAGE_OF_GLOBAL_GDP}</EconomicsTotalNationalPercent>
-      <PieChart data={gdpBreakdownData} dataSourceConfig={gdpBreakdownDataSourceConfig} justify="center" height={'310'} maxWidth={370} percentOfTotalColumns={1} />
+      <PieChart data={gdpBreakdownData} dataSourceConfig={gdpBreakdownDataSourceConfig} justify="center" height={'300'} maxWidth={680} percentOfTotalColumns={1} />
       <EconomicsTotalTitle marginBottom="10px">Major Exports</EconomicsTotalTitle>
       <EconomicsTagListContainer>
         {/* <EconomicsTagList>

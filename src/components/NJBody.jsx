@@ -16,7 +16,7 @@ import NJOverviewPage from './NJOverviewPage';
 import NJForestAndLandUsePage from './NJForestAndLandUsePage';
 import NJGovernancePage from './NJGovernancePage';
 import NJPartnershipsPage from './NJPartnershipsPage';
-import NJReportCardsPage from './NJReportCardsPage';
+// import NJReportCardsPage from './NJReportCardsPage';
 
 import TempIconList from './TempIconList';
 
@@ -25,8 +25,8 @@ const NJBodyStyled = styled.div`
 
   background-color: #e5e5e5;
   /* background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%); */
-  height: calc(100% - 110px);
-  padding: 2.5% 1.25%;
+  height: 100%;
+  padding: 50px 1.25%;
   width: 90%;
   max-width: 1480px;
 

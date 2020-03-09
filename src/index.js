@@ -24,8 +24,7 @@ import App from './components/App';
 const cache = new InMemoryCache();
 
 // const requestLink = new HttpLink({
-//   // uri: 'http://localhost:4000/',
-//   uri: 'https://1qhhedp1la.execute-api.us-west-1.amazonaws.com/dev/graphql',
+//   uri: 'http://localhost:4000/',
 // });
 
 const batchRequestLink = new BatchHttpLink({
