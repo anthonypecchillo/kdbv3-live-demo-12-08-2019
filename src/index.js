@@ -5,8 +5,9 @@
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
+import { BatchHttpLink } from "apollo-link-batch-http";
 import { onError } from 'apollo-link-error';
-import { HttpLink } from 'apollo-link-http';
+// import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { RetryLink } from 'apollo-link-retry';
 import React from 'react';
@@ -22,8 +23,12 @@ import App from './components/App';
 
 const cache = new InMemoryCache();
 
-const requestLink = new HttpLink({
-  // uri: 'http://localhost:4000/',
+// const requestLink = new HttpLink({
+//   // uri: 'http://localhost:4000/',
+//   uri: 'https://1qhhedp1la.execute-api.us-west-1.amazonaws.com/dev/graphql',
+// });
+
+const batchRequestLink = new BatchHttpLink({
   uri: 'https://1qhhedp1la.execute-api.us-west-1.amazonaws.com/dev/graphql',
 });
 
@@ -43,7 +48,7 @@ const retryLink = new RetryLink({
   interval: (delay, count) => (count > 5 ? 10000 : delay),
 });
 
-const link = ApolloLink.from([retryLink, errorLink, requestLink]);
+const link = ApolloLink.from([retryLink, errorLink, batchRequestLink]);
 
 const client = new ApolloClient({
   cache,
