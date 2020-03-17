@@ -88,77 +88,78 @@ class App extends React.Component {
     const nationRoutes = ROUTES.filter(({ JURISDICTION_TYPE }) => JURISDICTION_TYPE === 'nation');
 
     return (
-      <AppContainer>
-        <NavBar
-          content={navBar}
-          toggleHamburgerMenu={this.toggleHamburgerMenu}
-          toggleLanguage={this.toggleLanguage}
-          toggleModal={this.toggleModal}
-        />
-        {modalBox}
-        {hamburgerMenu}
-        <Switch>
-          <Route exact path="/">
-            <Landing content={landingPage} toggleModal={this.toggleModal} />
-          </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/sources">
-            <Sources />
-          </Route>
-          <Route exact path="/contact">
-            <Contact />
-          </Route>
-          {stateRoutes.map(
-            ({
-              FLAGS,
-              FULL_NAME,
-              HEADER_IMAGE_URL,
-              JURISDICTION_TYPE,
-              NATION_NAME,
-              JURISDICTION_NAME,
-              URL,
-            }) => (
-              <Route path={URL} key={FULL_NAME}>
-                <NJPage
-                  flags={FLAGS}
-                  fullName={FULL_NAME}
-                  headerImageURL={HEADER_IMAGE_URL}
-                  jurisdictionName={JURISDICTION_NAME}
-                  jurisdictionType={JURISDICTION_TYPE}
-                  language={language}
-                  nationName={NATION_NAME}
-                />
-              </Route>
-            )
-          )}
-          {nationRoutes.map(
-            ({
-              FLAGS,
-              FULL_NAME,
-              HEADER_IMAGE_URL,
-              JURISDICTION_TYPE,
-              NATION_NAME,
-              JURISDICTION_NAME,
-              URL,
-            }) => (
-              <Route path={URL} key={FULL_NAME}>
-                <NJPage
-                  flags={FLAGS}
-                  fullName={FULL_NAME}
-                  headerImageURL={HEADER_IMAGE_URL}
-                  jurisdictionType={JURISDICTION_TYPE}
-                  language={language}
-                  nationName={NATION_NAME}
-                  jurisdictionName={JURISDICTION_NAME}
-                />
-              </Route>
-            )
-          )}
-        </Switch>
-        <Footer content={footer} />
-      </AppContainer>
+      <About />
+      // <AppContainer>
+      //   <NavBar
+      //     content={navBar}
+      //     toggleHamburgerMenu={this.toggleHamburgerMenu}
+      //     toggleLanguage={this.toggleLanguage}
+      //     toggleModal={this.toggleModal}
+      //   />
+      //   {modalBox}
+      //   {hamburgerMenu}
+      //   <Switch>
+      //     <Route exact path="/">
+      //       <Landing content={landingPage} toggleModal={this.toggleModal} />
+      //     </Route>
+      //     <Route exact path="/about">
+      //       <About />
+      //     </Route>
+      //     <Route exact path="/sources">
+      //       <Sources />
+      //     </Route>
+      //     <Route exact path="/contact">
+      //       <Contact />
+      //     </Route>
+      //     {stateRoutes.map(
+      //       ({
+      //         FLAGS,
+      //         FULL_NAME,
+      //         HEADER_IMAGE_URL,
+      //         JURISDICTION_TYPE,
+      //         NATION_NAME,
+      //         JURISDICTION_NAME,
+      //         URL,
+      //       }) => (
+      //         <Route path={URL} key={FULL_NAME}>
+      //           <NJPage
+      //             flags={FLAGS}
+      //             fullName={FULL_NAME}
+      //             headerImageURL={HEADER_IMAGE_URL}
+      //             jurisdictionName={JURISDICTION_NAME}
+      //             jurisdictionType={JURISDICTION_TYPE}
+      //             language={language}
+      //             nationName={NATION_NAME}
+      //           />
+      //         </Route>
+      //       )
+      //     )}
+      //     {nationRoutes.map(
+      //       ({
+      //         FLAGS,
+      //         FULL_NAME,
+      //         HEADER_IMAGE_URL,
+      //         JURISDICTION_TYPE,
+      //         NATION_NAME,
+      //         JURISDICTION_NAME,
+      //         URL,
+      //       }) => (
+      //         <Route path={URL} key={FULL_NAME}>
+      //           <NJPage
+      //             flags={FLAGS}
+      //             fullName={FULL_NAME}
+      //             headerImageURL={HEADER_IMAGE_URL}
+      //             jurisdictionType={JURISDICTION_TYPE}
+      //             language={language}
+      //             nationName={NATION_NAME}
+      //             jurisdictionName={JURISDICTION_NAME}
+      //           />
+      //         </Route>
+      //       )
+      //     )}
+      //   </Switch>
+      //   <Footer content={footer} />
+      // </AppContainer>
     );
   }
 }

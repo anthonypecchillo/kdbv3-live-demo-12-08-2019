@@ -396,6 +396,8 @@ html, body, #root {
   margin: 0;
   overscroll-behavior: none;
   font-family: 'Montserrat';
+
+  background-color: #e5e5e5;
 }
 
 body {

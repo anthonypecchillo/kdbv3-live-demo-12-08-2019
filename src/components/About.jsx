@@ -31,6 +31,7 @@ const About = ({ content }) => {
           <LottieControl />
           <center>
             <h1>Under Construction!</h1>
+            <h3>A new build will be released shortly. Stay tuned! :)</h3>
           </center>
         </Tile>
       </AboutGrid>
