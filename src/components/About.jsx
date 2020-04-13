@@ -9,7 +9,6 @@ import LottieControl from './LottieControl';
 import ScrollToTopOnMount from './ScrollToTopOnMount';
 import Tile from './Tile';
 
-// One fragment is (was?) 90.6px!
 const AboutGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -31,7 +30,6 @@ const About = ({ content }) => {
           <LottieControl />
           <center>
             <h1>Under Construction!</h1>
-            <h3>A new build will be released shortly. Stay tuned! :)</h3>
           </center>
         </Tile>
       </AboutGrid>

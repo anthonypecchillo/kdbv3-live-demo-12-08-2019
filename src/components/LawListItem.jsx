@@ -13,7 +13,8 @@ const LawListItemGrid = styled.div`
   grid-template-rows: 45px auto 45px;
 
   border-radius: 5px;
-  box-shadow: 6px 18px 18px rgba(0, 0, 0, 0.08), -6px 18px 18px rgba(0, 0, 0, 0.08);
+  ${'' /* box-shadow: 6px 18px 18px rgba(0, 0, 0, 0.08), -6px 18px 18px rgba(0, 0, 0, 0.08); */}
+  box-shadow: 4px 8px 6px rgba(0, 0, 0, 0.08), -4px 8px 6px rgba(0, 0, 0, 0.08);
   font-size: 16px;
   font-weight: 500;
   margin: 0 auto;
@@ -21,6 +22,14 @@ const LawListItemGrid = styled.div`
     isOpen && index !== lastIndex ? '45px' : '30px'};
   margin-top: ${({ index, isOpen }) => (isOpen && index !== 0 ? '45px' : '30px')};
   width: 95%;
+
+  @media (max-width: 765px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 460px) {
+    font-size: 12px;
+  }
 `;
 
 const LawHeader = styled.div`
@@ -32,6 +41,10 @@ const LawHeader = styled.div`
   border-radius: 5px 5px 0 0;
   color: #ffffff;
   width: 100%;
+
+  @media (max-width: 460px) {
+    grid-template-columns: 8fr minmax(140px, 3fr) minmax(36px, 1fr);
+  }
 `;
 
 const LawTitle = styled.span`
@@ -39,6 +52,10 @@ const LawTitle = styled.span`
   justify-self: start;
 
   margin-left: 2.5%;
+
+  @media (max-width: 460px) {
+    margin-left: 11.85%;
+  }
 `;
 
 const LawDate = styled.span`
@@ -59,12 +76,17 @@ const LawTagList = styled.div`
   direction: rtl;
   height: 100%;
   overflow-x: auto;
-  /* -webkit-overflow-scrolling: touch; For Momentum Scroll on Mobile */
+  -webkit-overflow-scrolling: touch;  /* For Momentum Scroll on Mobile */
   padding-right: 2.5%;
-  width: 100%;
 
   ::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (max-width: 460px) {
+    margin-right: 4.45%;
+    margin-left: 4.45%;
+    padding-right: 0;
   }
 `;
 
@@ -75,9 +97,14 @@ const LawTag = styled.div`
   direction: ltr;
   height: 70%;
   line-height: 31px;
-  margin: 0 10px;
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: ${({ isFirstItem }) => !isFirstItem && '10px'};
   text-align: center;
+
+  @media (max-width: 460px) {
+    padding-left: 5px;
+    padding-right: ${({ isFirstItem }) => !isFirstItem && '5px'};
+  }
 `;
 
 class LawListItem extends React.Component {
@@ -100,7 +127,6 @@ class LawListItem extends React.Component {
   render() {
     const { index, law, lawListLength } = this.props;
     const { isOpen } = this.state;
-
     const chevronClass = isOpen ? 'fas fa-chevron-up' : 'fas fa-chevron-down';
     const lawNumber = law.lawNumber || '';
     // Source for date formatting regex (need this for Safari smh)
@@ -110,6 +136,7 @@ class LawListItem extends React.Component {
 
     const citations = law.citations.length ? law.citations : [];
 
+    // TODO: Chevron Icon stopped flipping after FA Pro was added to project...fix this.
     return (
       <LawListItemGrid index={index} isOpen={isOpen} lastIndex={lawListLength - 1}>
         <LawHeader onClick={this.handleChevronClick}>
@@ -126,7 +153,7 @@ class LawListItem extends React.Component {
         />
         <LawTagList isOpen={isOpen}>
           {law.lawTags.map((lawTag, index) => (
-            <LawTag key={index}>{lawTag.lawTagTranslate.tagName}</LawTag>
+            <LawTag isFirstItem={!index} key={index}>{lawTag.lawTagTranslate.tagName}</LawTag>
           ))}
         </LawTagList>
       </LawListItemGrid>

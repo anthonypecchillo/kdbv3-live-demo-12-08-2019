@@ -9,7 +9,6 @@ import styled from 'styled-components';
 import jurisdictions2 from '../const/jurisdictions2';
 
 const MemberStatesGrid = styled.div`
-  grid-column: 2/3;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: 2fr repeat(10, 1fr);
@@ -37,7 +36,7 @@ const MemberStatesGrid = styled.div`
   }
 
   @media (max-width: 460px) {
-    grid-column: 1/4;
+    grid-column: 1/2;
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas:
       "brazil indonesia mexico peru ivorycoast"
