@@ -395,9 +395,7 @@ html, body, #root {
   height: auto;
   margin: 0;
   overscroll-behavior: none;
-  font-family: 'Montserrat';
-
-  background-color: #e5e5e5;
+  font-family: 'Cereal';
 }
 
 body {
@@ -407,7 +405,7 @@ body {
 
 p {
   font-size: 14px;
-  text-indent: 20px;
+  /* text-indent: 20px; */
 }
 
 ul, ol {
@@ -417,4 +415,18 @@ ul, ol {
 
 li {
   margin-bottom: 14px;
+}
+
+@media (max-width: 460px) {
+  p {
+    font-size: 12px;
+  }
+
+  ul {
+    padding-left: 25px;
+  }
+
+  li {
+    font-size: 12px;
+  }
 }
